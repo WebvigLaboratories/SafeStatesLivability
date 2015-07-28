@@ -1,0 +1,7 @@
+dev.db
+*.pyc
+SafeStates.iml
+.idea/
+.coverage
+htmlcov/
+*.cfg

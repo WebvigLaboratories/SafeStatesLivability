@@ -1,0 +1,81 @@
+/* Disclaimer */
+#disclaimer_text {
+	font-size: 10px !important;
+	font-style: italic;
+}
+
+/* Header */
+#header_text {
+	font-family: Arial !important;
+	color: #C00;
+	font-weight: bold !important;
+	font-size:12px !important;
+}
+#header_title {
+	color:#FFF;
+	font-family:Arial;
+	font-weight:bold;
+	font-size:16px;
+}
+#errorheader {
+	color:red;
+	font-family: Arial;
+}
+
+/* Links */
+#link_text {
+	color:#03F !important;	
+}
+.submit {
+	background: url(http://media.fratellicomputing.com/images/safestates/btn-submit.png) no-repeat;
+	height: 23px;
+	width: 72px;
+	border: none;
+}
+.submit:hover {
+		background: url(http://media.fratellicomputing.com/images/safestates/btn-submit-hover.png) no-repeat;
+	}
+	#qt_header {
+	color: #FFF;
+	background-color: #043F88;
+	font-family: Arial;
+	font-size: 16px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/* Questions */
+#qt_header {
+    color: #FFF;
+    background-color: #043F88;
+    font-family: Arial;
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#qt_headerquestion {
+	color: #FFF;
+	background-color: #043F88;
+	font-family: Arial;
+	font-size: 14px !important;
+	font-weight: bold !important;
+}
+#qt_answer {
+	padding: 10px 10px 15px 15px !important;
+	font-family: Arial;
+	font-size: 12px !important;
+}
+
+
+#qt_answer img {
+    margin-bottom: 10px;
+}
+
+#qt_subheader {
+	background-color: #DAEEF3;
+	font-weight: bold;
+	font-family: Arial;
+}
+
+

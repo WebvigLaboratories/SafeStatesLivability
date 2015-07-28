@@ -1,0 +1,338 @@
+{% extends "new-index.html" %}
+{% load staticfiles %}
+
+{% block body %}
+<table id="SpContent" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="SpContent_Container">
+
+            <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/ContentScores.js"></script>
+
+            <div id="CustomPageBody">
+                <table border="0" style="margin-left: auto; margin-right: auto;">
+                    <tr>
+                        <td align="center">
+                            <form action="{% url "results" %}" method="post">{% csrf_token %}
+                                <table align="center" style="width: 90%;">
+                                    <tr>
+                                        <td align="center">
+                                            <p><img src="{% static "img/safestates_skyline.jpg" %}" alt="" width="755" height="220"></p>
+                                            <br />
+                                            <p id="header_text">TO BEGIN YOUR SEARCH, ANSWER EACH OF THE QUESTIONS BELOW AND CLICK &quot;SUBMIT.&quot;</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {% if errors %}
+                                            <p align="center" id="errorheader">ERROR: Please provide an answer to the question(s) below</p>
+                                            {% endif %}
+                                            <table id="questionstable" align="center" width="755" border="1" cellspacing="1" cellpadding="1">
+                                                <tr>
+                                                    <td id="qt_headerquestion" width="85%">
+                                                        What size community are you trying to assess? (Select one.)
+                                                        {% if error_q1 %}
+                                                            <span id="errorheader"><br />Please provide an answer</span>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td width="15%" align="center" id="qt_headerquestion">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">
+                                                            1. An Urban or Suburban Community (Population of 10,001+)
+                                                        </p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="radio" name="question1group" value="1" {% if q1_1 %}checked{% endif %} id="question1group_0">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">
+                                                        2. A Rural Community (Population of 10,000 or fewer)
+                                                        </p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="radio" name="question1group" value="2" {% if q1_2 %}checked{% endif %} id="question1group_1">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>&nbsp;</td>
+                                                  <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                  <td id="qt_headerquestion">
+                                                      What are you trying to assess? (Select all that apply.)
+                                                      {% if error_q2 %}
+                                                          <span id="errorheader"><br>Please provide an answer</span>
+                                                      {% endif %}</td>
+                                                  <td align="center" id="qt_headerquestion">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">1. Development or Transportation Project</p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="checkbox" name="question2_1" id="question2_1" {% if q2_1 %}checked{% endif %}>
+                                                        <label for="question2_1"></label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">2. Physical Environment of a Community, Neighborhood, or School</p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="checkbox" name="question2_2" id="question2_2" {% if q2_2 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">3. Policy, Plan, Codes, or Standards (existing or proposed)</p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="checkbox" name="question2_3" id="question2_3" {% if q2_3 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">4. Walkability, Bikeability, and/or Transit Access</p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="checkbox" name="question2_4" id="question2_4" {% if q2_4 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">5. All of the above</p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="checkbox" name="question2_5" id="question2_5" {% if q2_5 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="qt_headerquestion">
+                                                        Who will be the primary user(s) of the tool? (Select all that apply.){% if error_q3 %}
+                                                        <span id="errorheader"><br>Please provide an answer</span>{% endif %}
+                                                    </td>
+                                                    <td align="center" id="qt_headerquestion">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">1. Elected officials</p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="checkbox" name="question3_1" id="question3_1" {% if q3_1 %}checked{% endif %}>
+                                                        <label for="question3_1"></label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">2. Laypersons and Community Members</p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="checkbox" name="question3_2" id="question3_2" {% if q3_2 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">3. Transportation or Land Use Planners</p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="checkbox" name="question3_3" id="question3_3" {% if q3_3 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">4. Public Health Professionals</p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="checkbox" name="question3_4" id="question3_4" {% if q3_4 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">5. School Officials</p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="checkbox" name="question3_5" id="question3_5" {% if q3_5 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">6. All of the above</p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">
+                                                        <input type="checkbox" name="question3_6" id="question3_6" {% if q3_6 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="qt_headerquestion">
+                                                        What topics do you want the tool to address? (Select all that apply.)
+                                                        {% if error_q4 %}
+                                                            <span id="errorheader"><br>Please provide an answer</span>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td align="center" id="qt_headerquestion">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="qt_subheader">
+                                                        1.  Transportation Choices &amp; Safe, Multimodal Neighborhoods
+                                                    </td>
+                                                    <td align="center" id="qt_subheader">
+                                                        <input type="checkbox" name="question4_1" id="question4_1" {% if q4_1 %}checked{% endif %}>
+                                                        <label for="question4_1"></label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">
+                                                            <img src="{% static "img/safestates_train.jpg" %}" width="126" height="116" hspace="10" align="left">
+                                                            Transportation choices in communities should be diverse and allow for a variety of modes.
+                                                            In addition to motor vehicles, communities should provide a host of additional and
+                                                            alternative transportation choices, including safe and accessible walking paths and
+                                                            sidewalks, bike lanes and paths for bicycling, and access to public transit and
+                                                            paratransit systems.
+                                                        </p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="qt_subheader">2. Equitable Housing Options</td>
+                                                    <td align="center" id="qt_subheader">
+                                                        <input type="checkbox" name="question4_2" id="question4_2" {% if q4_2 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">
+                                                            <img src="{% static "img/safestates_neighborhood.jpg" %}" alt="" width="126" height="103" hspace="10" align="left">
+                                                            Housing options in a community should be diverse and affordable for residents and households within a wide
+                                                            range of economic levels, cultures, age groups, and physical abilities.  By having a wide range of affordable
+                                                            housing choices, residents can comfortably live and work within their community.
+                                                        </p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="qt_subheader">3. Investment in Existing Communities</td>
+                                                    <td align="center" id="qt_subheader">
+                                                        <input type="checkbox" name="question4_3" id="question4_3" {% if q4_3 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">
+                                                            <img src="{% static "img/safestates_family.jpg" %}" alt="" width="126" height="113" hspace="10" align="left">
+                                                            New and/or infill development should be directed toward areas where public investments have already
+                                                            been made in infrastructure, parks, schools, and other facilities. In cities, this can mean focusing
+                                                            development on infill sites and abandoned brownfields; in towns and rural communities, this can mean
+                                                            clustering development around existing town centers and transportation nodes.
+                                                        </p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="qt_subheader">4. Compact, Mixed-Use Design</td>
+                                                    <td align="center" id="qt_subheader">
+                                                        <input type="checkbox" name="question4_4" id="question4_4" {% if q4_4 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">
+                                                            <img src="{% static "img/safestates_bikes.jpg" %}" alt="" width="126" height="109" hspace="10" align="left">
+                                                            Communities should incorporate more compact design as an alternative to conventional, land consumptive
+                                                            development.  This design requires integrating a mix of land uses (such as residential, commercial,
+                                                            and civic) into neighborhoods and communities. By locating a variety of community destinations in
+                                                            close proximity to each other, alternatives to driving - walking, bicycling, and public transit -
+                                                            become viable.
+                                                        </p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="qt_subheader">5. Health-Focused Design and Policies</td>
+                                                    <td align="center" id="qt_subheader">
+                                                        <input type="checkbox" name="question4_5" id="question4_5" {% if q4_5 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">
+                                                            <img src="{% static "img/safestates_kids.jpg" %}" alt="" width="126" height="109" align="left" style="margin: 10px 0px;">
+                                                            Communities should be planned with health as a priority and should be designed to make it easier for
+                                                            residents to live healthy lives. The design of a community should encourage positive health outcomes
+                                                            (such as enabling access to healthy foods) while minimizing the likelihood of adverse health outcomes
+                                                            (such as pedestrian injuries or asthma rates in children from air pollution).
+                                                        </p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="qt_subheader">6. Preservation of Rural Areas &amp; Open Space</td>
+                                                    <td align="center" id="qt_subheader">
+                                                        <input type="checkbox" name="question4_6" id="question4_6" {% if q4_6 %}checked{% endif %}>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p id="qt_answer">
+                                                            <img src="{% static "img/safestates_rural.jpg" %}" alt="" width="126" height="100" hspace="10" align="left">
+                                                            Agricultural land and open space, both within and surrounding densely developed areas, should be
+                                                            preserved.  In addition, biodiversity, ecological systems, and natural green space (or green
+                                                            infrastructure) should be integrated into development.
+                                                        </p>
+                                                    </td>
+                                                    <td align="center" id="questionstable">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" align="center">
+                                                        <br />
+                                                        <input type="submit" name="Submit" class="submit" value="">
+                                                        <br /><br />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+{% endblock %}

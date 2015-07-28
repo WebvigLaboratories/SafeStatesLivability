@@ -1,0 +1,156 @@
+		<div id="itoolbar_bg">
+			<div id="isearch">
+				<form id="QuickSearchForm" name="QuickSearchForm" action="https://safestates.site-ym.com/search/all.asp">
+                    <div id="QuickSearchFormInner1" class="ui-widget">
+                        <input id="QuickSearchForm_bst" name="bst" maxlength='50' value='Enter search criteria...'@"onfocus='QuickSearchForm_OnFocus();'/>
+                    </div>
+                    <div id='QuickSearchFormInner2'><a href='#' id='QuickSearchSubmit' onclick='return QuickSearchForm_DoSubmit();'>Search&nbsp;&raquo;</a></div>
+                </form>
+                <script type="text/javascript">
+                    function QuickSearchForm_DoSubmit()
+                    {
+                            var QuickSearchForm = document.QuickSearchForm;
+                         if(QuickSearchForm)
+                         {
+                                ClearDefaultValue(QuickSearchForm.bst);
+                             QuickSearchForm.submit();
+                         }
+                            return false;
+                    }
+                    $(document).ready(function ()
+                    {
+                            $("#QuickSearchForm_bst").click(function()
+                            {
+                                if ($("#QuickSearchForm_bst").val() == "Enter search criteria...")
+                                    $("#QuickSearchForm_bst").val('');
+                                });
+                                $("#QuickSearchForm_bst").blur(function ()
+                                {
+                                    if ($("#QuickSearchForm_bst").val() == '')
+                                        $("#QuickSearchForm_bst").val('Enter search criteria...');
+                                    });
+                                    $("#QuickSearchForm_bst").autocomplete({
+                                        minLength: 3,
+                                        delay: 1000,
+                                        source: function (request, response)
+                                        {
+                                            $.ajax({
+                                            url: url = 'https://safestates.site-ym.com/general/CategorySearchReciever.aspx?SearchTerm=' + $("#QuickSearchForm_bst").val() + "&cb=" + getCurrentTime(),
+                                            dataType: "json",
+                                            data: {
+                                            featureClass: "P",
+                                            style: "full",
+                                            maxRows: 20,
+                                            name_startsWith: request.term
+                                        },
+                                        success: function (data)
+                                        {
+                                            response($.map(data.CatalogSearchSuggestions, function (item)
+                                            {
+                                                return item;
+                                            }));
+                                        }
+                                    });
+                                },
+                                focus: function (event, ui)
+                                {
+                                    return false;
+                                },
+                                select: function (event, ui)
+                                {				document.location.href = ui.item.url;
+                                    return false;
+                                },
+                                open: function ()
+                                {
+                                    $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+                                },
+                                close: function ()
+                                {
+                                    $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+                                }
+                             }).data("autocomplete")._renderItem = function (ul, item)
+                             {
+                                    var linkText = "";
+                                 var index = parseInt(item.index);
+                                    if (item.category != "")
+                                    {
+                                        linkText = item.category + ": ";
+                                    }
+                                    linkText += item.desc;
+                                 if (index > 0)
+                                 {
+                                        return $("<li>").data("item.autocomplete", item).append("<a href=" + item.url + ">" + linkText + "</a>").appendTo(ul);
+                                 }
+                                    else
+                                 {
+                                     return $("<li class=\"FirstAutoCompleteItem\">").data("item.autocomplete", item).append(linkText).appendTo(ul)
+                                 }
+                             }
+                        });
+                    </script>
+			</div>
+
+			<div id="itoolbar">
+				<a id="PrintPage" href="#" onclick="return false;" title="Print view will be available once the page has finished loading."><img src="https://safestates.site-ym.com/global_graphics/icons/print_bw.gif" align="left" border="0" height="16" width="16">Print to Page</a><script type='text/javascript'>function PrintPageClickHandler(){this.handleEvent = createPrintPagePopup }PrintPage_OnClick = new PrintPageClickHandler(); addEventHandler_OnLoad(function(){ var element = document.getElementById("PrintPage"); if(element) { element.onclick = PrintPage_OnClick.handleEvent; element.title = "Print Page";} });</script> &nbsp; | &nbsp; <a href='https://safestates.site-ym.com/general/?type=CONTACT'>Contact Us</a> &nbsp; | &nbsp; <a href='https://safestates.site-ym.com/login.aspx'>Sign In</a> &nbsp; | &nbsp; <a href='https://safestates.site-ym.com/general/register_start.asp'>Join Today</a>
+			</div>
+		</div>
+
+        <div id="header">
+            <div id="header">
+                <a href="https://safestates.site-ym.com/" target="_parent" style="color:#000;"><img id="logo" src="https://safestates.site-ym.com/graphics/logo.png" /></a>
+                <div id="tagline">
+                An Alliance to Strengthen the<br />
+                Practice of Injury and Violence Prevention
+                </div>
+            </div>
+            <style type="text/css">
+                  #Head
+                  {
+                      background-image: url('https://safestates.site-ym.com/graphics/bg_top.gif');
+                  }
+             </style>
+        </div>
+
+        <div id="mainmenu">
+            <div id="FrontendMainMenu" class="radmenu RadMenu_YMPublic ">
+                <!-- 4.3.2 -->
+                <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/RadControls/Menu/Scripts/4_3_2/RadMenu.js"></script>
+                <span id="FrontendMainMenuStyleSheetHolder" style="display:none;"></span>
+                <script type="text/javascript">RadControlsNamespace.AppendStyleSheet(false, 'FrontendMainMenu', 'https://safestates.site-ym.com/global_inc/RadControls/Menu/Scripts/4_3_2/menu.css');</script>
+                <script type="text/javascript">RadControlsNamespace.AppendStyleSheet(false, 'FrontendMainMenu', 'https://safestates.site-ym.com/global_inc/RadControls/Menu/Skins/YMPublic/styles.css');</script>
+                <ul class="horizontal rootGroup">
+                    <li class="item first">
+                        <a href="https://safestates.site-ym.com/" id="FrontendMainMenu_m0" class="link">
+                            <span class="text">SafeStates.org</span>
+                        </a>
+                    </li>
+                </ul>
+                <input type="hidden" id="FrontendMainMenu_Hidden" name="FrontendMainMenu" />
+                <script type="text/javascript">
+                    window["FrontendMainMenu"] = RadMenu.Create("FrontendMainMenu");
+                    window["FrontendMainMenu"].Initialize({"EnableAutoScroll":true,"Skin":"YMPublic","Enabled":true},{"FrontendMainMenu_m0_m0":{"NavigateAfterClick":false},"FrontendMainMenu_m0_m2_m1":{"NavigateAfterClick":false}});
+                </script>
+            </div>
+            <div id="FlexiMenu">
+                <form action="../">
+                    <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+                        <option disabled selected>Menu</option>
+                        <option class="optionGroup" value="https://safestates.site-ym.com/">Return to SafeStates.org</option>
+                    </select>
+                </form>
+                <script type="text/javascript">
+                    $(window).resize(function(){
+                        if ($(window).width() < 769)
+                        {
+                            $('#FlexiMenu').show();
+                            $('#FrontendMainMenu').hide();
+                        }
+                        else
+                        {
+                            $('#FlexiMenu').hide();
+                            $('#FrontendMainMenu').show();
+                        }
+                    });
+                </script>
+            </div>
+        </div>

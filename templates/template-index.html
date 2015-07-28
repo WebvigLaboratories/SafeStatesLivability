@@ -1,0 +1,847 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Livability & Smart Growth Assessment Tool Database - Safe States Alliance</title>
+        <meta name="keywords" content="safe,states,alliance,injury,prevention,IVP,tools, NHTSA,livability">
+
+		<link rel="stylesheet" type="text/css" href="https://safestates.site-ym.com/global_inc/site_templates/YM-FX-02/combined.css?_v=1.47.104.115&context=sp"/>
+		<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/container/assets/skins/sam/container.css">
+		<link rel="stylesheet" type="text/css" href="https://safestates.site-ym.com/global_graphics/skins/MemberCustomPageMenu/yuimenu.css">
+		<!--[if IE]><link rel="stylesheet" type="text/css" href="/global_inc/site_templates/YM-FX-02/ie.css">
+		<style type="text/css">
+			#CustomPageBody,
+			div.ContributedContent {
+				padding-bottom: expression(this.scrollWidth > this.offsetWidth ? 17 : 0); }
+		</style><![endif]-->
+
+		<!--@@DG_PRINT_BASE_URL@@
+			IMPORTANT! DO NOT MOVE OR MODIFY -->
+
+
+		<meta name="viewport" content="width=device-width" />
+
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/dragdrop/dragdrop-min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/container/container-min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/menu/menu-min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/json/json-min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/combined.js?context=sp&_v=1.38"></script>
+		<script type='text/javascript'>
+			var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-16112753-1'], ['_setDomainName', 'none'], ['_setAllowLinker', true], ['_trackPageview']);_gaq.push(['YM._setAccount', 'UA-2449742-47'], ['YM._setDomainName', 'none'], ['YM._setAllowLinker', true], ['YM._trackPageview']);
+			(function() {
+		        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	            })();
+			</script>
+
+		<script type="text/javascript">
+			addEventHandler_OnLoad(function(){CheckMultipartForms(true)});
+
+			var m_pulse = new Pulse('');
+			m_pulse.Start();
+		</script>
+
+
+			<script type="text/javascript">
+				YAHOO.util.Event.onDOMReady(getChats);
+				addEventHandler_OnUnload(function() { if (m_ChatTID) clearTimeout(m_ChatTID) });
+			</script>
+	</head>
+
+
+
+<body id="PageBody" onunload="try{if(m_blnDoBodyUnload) Body_OnUnload();}catch(e){}">
+	<div id="icontainer">
+		<div id="itoolbar_bg">
+			<div id="isearch">
+				<form id="QuickSearchForm" name="QuickSearchForm" action="https://safestates.site-ym.com/search/all.asp">
+                    <div id="QuickSearchFormInner1" class="ui-widget">
+                        <input id="QuickSearchForm_bst" name="bst" maxlength='50' value='Enter search criteria...'@"onfocus='QuickSearchForm_OnFocus();'/>
+                    </div>
+                    <div id='QuickSearchFormInner2'><a href='#' id='QuickSearchSubmit' onclick='return QuickSearchForm_DoSubmit();'>Search&nbsp;&raquo;</a></div>
+                </form>
+                <script type="text/javascript">
+                    function QuickSearchForm_DoSubmit()
+                    {
+                            var QuickSearchForm = document.QuickSearchForm;
+                         if(QuickSearchForm)
+                         {
+                                ClearDefaultValue(QuickSearchForm.bst);
+                             QuickSearchForm.submit();
+                         }
+                            return false;
+                    }
+                    $(document).ready(function ()
+                    {
+                            $("#QuickSearchForm_bst").click(function()
+                            {
+                                if ($("#QuickSearchForm_bst").val() == "Enter search criteria...")
+                                    $("#QuickSearchForm_bst").val('');
+                                });
+                                $("#QuickSearchForm_bst").blur(function ()
+                                {
+                                    if ($("#QuickSearchForm_bst").val() == '')
+                                        $("#QuickSearchForm_bst").val('Enter search criteria...');
+                                    });
+                                    $("#QuickSearchForm_bst").autocomplete({
+                                        minLength: 3,
+                                        delay: 1000,
+                                        source: function (request, response)
+                                        {
+                                            $.ajax({
+                                            url: url = 'https://safestates.site-ym.com/general/CategorySearchReciever.aspx?SearchTerm=' + $("#QuickSearchForm_bst").val() + "&cb=" + getCurrentTime(),
+                                            dataType: "json",
+                                            data: {
+                                            featureClass: "P",
+                                            style: "full",
+                                            maxRows: 20,
+                                            name_startsWith: request.term
+                                        },
+                                        success: function (data)
+                                        {
+                                            response($.map(data.CatalogSearchSuggestions, function (item)
+                                            {
+                                                return item;
+                                            }));
+                                        }
+                                    });
+                                },
+                                focus: function (event, ui)
+                                {
+                                    return false;
+                                },
+                                select: function (event, ui)
+                                {				document.location.href = ui.item.url;
+                                    return false;
+                                },
+                                open: function ()
+                                {
+                                    $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+                                },
+                                close: function ()
+                                {
+                                    $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+                                }
+                             }).data("autocomplete")._renderItem = function (ul, item)
+                             {
+                                    var linkText = "";
+                                 var index = parseInt(item.index);
+                                    if (item.category != "")
+                                    {
+                                        linkText = item.category + ": ";
+                                    }
+                                    linkText += item.desc;
+                                 if (index > 0)
+                                 {
+                                        return $("<li>").data("item.autocomplete", item).append("<a href=" + item.url + ">" + linkText + "</a>").appendTo(ul);
+                                 }
+                                    else
+                                 {
+                                     return $("<li class=\"FirstAutoCompleteItem\">").data("item.autocomplete", item).append(linkText).appendTo(ul)
+                                 }
+                             }
+                        });
+                    </script>
+			</div>
+
+			<div id="itoolbar">
+				<a id="PrintPage" href="#" onclick="return false;" title="Print view will be available once the page has finished loading."><img src="/global_graphics/icons/print_bw.gif" align="left" border="0" height="16" width="16">Print to Page</a><script type='text/javascript'>function PrintPageClickHandler(){this.handleEvent = createPrintPagePopup }PrintPage_OnClick = new PrintPageClickHandler(); addEventHandler_OnLoad(function(){ var element = document.getElementById("PrintPage"); if(element) { element.onclick = PrintPage_OnClick.handleEvent; element.title = "Print Page";} });</script> &nbsp; | &nbsp; <a href='https://safestates.site-ym.com/general/?type=CONTACT'>Contact Us</a> &nbsp; | &nbsp; <a href='https://safestates.site-ym.com/login.aspx'>Sign In</a> &nbsp; | &nbsp; <a href='https://safestates.site-ym.com/general/register_start.asp'>Join Today</a>
+			</div>
+		</div>
+
+        <div id="header">
+            <div id="header">
+                <a href="/" target="_parent" style="color:#000;"><img id="logo" src="https://safestates.site-ym.com/graphics/logo.png" /></a>
+                <div id="tagline">
+                An Alliance to Strengthen the<br />
+                Practice of Injury and Violence Prevention
+                </div>
+            </div>
+            <style type="text/css">
+                  #Head
+                  {
+                      background-image: url('https://safestates.site-ym.com/graphics/bg_top.gif');
+                  }
+             </style>
+        </div>
+
+        <div id="mainmenu">
+            <div id="FrontendMainMenu" class="radmenu RadMenu_YMPublic ">
+                <!-- 4.3.2 -->
+                <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/RadControls/Menu/Scripts/4_3_2/RadMenu.js"></script>
+                <span id="FrontendMainMenuStyleSheetHolder" style="display:none;"></span>
+                <script type="text/javascript">RadControlsNamespace.AppendStyleSheet(false, 'FrontendMainMenu', 'https://safestates.site-ym.com/global_inc/RadControls/Menu/Scripts/4_3_2/menu.css');</script>
+                <script type="text/javascript">RadControlsNamespace.AppendStyleSheet(false, 'FrontendMainMenu', 'https://safestates.site-ym.com/global_inc/RadControls/Menu/Skins/YMPublic/styles.css');</script>
+                <ul class="horizontal rootGroup">
+                    <li class="item first">
+                        <a href="https://safestates.site-ym.com/?page=MissionHistory" id="FrontendMainMenu_m0" class="link">
+                            <span class="text">About Us</span>
+                        </a>
+                        <div class="slide">
+                            <ul class="vertical group level1">
+                                <li class="item first">
+                                    <a href="#" id="FrontendMainMenu_m0_m0" class="link">
+                                        <span class="text">More about Safe States</span>
+                                    </a>
+                                    <div class="slide">
+                                        <ul class="vertical group level2">
+                                            <li class="item first">
+                                                <a href="https://safestates.site-ym.com/?page=MissionHistory" id="FrontendMainMenu_m0_m0_m0" class="link">
+                                                    <span class="text">Mission & History</span>
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="https://safestates.site-ym.com/?page=Bylaws_StrategicPlan" id="FrontendMainMenu_m0_m0_m1" class="link">
+                                                    <span class="text">Governing Documents</span>
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="https://safestates.site-ym.com/?page=Leadership" id="FrontendMainMenu_m0_m0_m2" class="link">
+                                                    <span class="text">Leadership</span>
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="https://safestates.site-ym.com/?page=Committees" id="FrontendMainMenu_m0_m0_m3" class="link">
+                                                    <span class="text">Committees</span>
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="https://safestates.site-ym.com/?page=Staff" id="FrontendMainMenu_m0_m0_m4" class="link">
+                                                    <span class="text">Staff</span>
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="https://safestates.site-ym.com/?page=AnnualReports" id="FrontendMainMenu_m0_m0_m5" class="link">
+                                                    <span class="text">Annual Reports</span>
+                                                </a>
+                                            </li>
+                                            <li class="item last">
+                                                <a href="https://safestates.site-ym.com/?Contact" id="FrontendMainMenu_m0_m0_m6" class="link">
+                                                    <span class="text">Contact </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?page=IVPintheUS" id="FrontendMainMenu_m0_m1" class="link">
+                                        <span class="text">Injuries & Violence in the U.S.</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?StateIVPPrograms" id="FrontendMainMenu_m0_m2" class="link">
+                                        <span class="text">State IVP Programs</span>
+                                    </a>
+                                    <div class="slide">
+                                        <ul class="vertical group level2">
+                                            <li class="item first">
+                                                <a href="https://safestates.site-ym.com/?IVPContactInfo" id="FrontendMainMenu_m0_m2_m0" class="link">
+                                                    <span class="text">Contact Information</span>
+                                                </a>
+                                            </li>
+                                            <li class="item last">
+                                                <a href="#" id="FrontendMainMenu_m0_m2_m1" class="link">
+                                                    <span class="text">Map of State IVP Programs</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="item last">
+                                    <a href="https://safestates.site-ym.com/?page=PressRoom" id="FrontendMainMenu_m0_m3" class="link">
+                                        <span class="text">Press Room</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="https://safestates.site-ym.com/?page=ProgramsHome" id="FrontendMainMenu_m1" class="link">
+                            <span class="text">Programs </span>
+                        </a>
+                        <div class="slide">
+                            <ul class="vertical group level1">
+                                <li class="item first">
+                                    <a href="https://safestates.site-ym.com/?ISW" id="FrontendMainMenu_m1_m0" class="link">
+                                        <span class="text">Injury Surveillance Workgroups</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?page=InnovativeInitiative" id="FrontendMainMenu_m1_m1" class="link">
+                                        <span class="text">Innovative Initiatives</span>
+                                    </a>
+                                </li>
+                                <li class="item last">
+                                    <a href="https://safestates.site-ym.com/?STAT" id="FrontendMainMenu_m1_m2" class="link">
+                                        <span class="text">State Technical Assessment Team </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="https://safestates.site-ym.com/?IVPTools" id="FrontendMainMenu_m2" class="link">
+                            <span class="text">Tools</span>
+                        </a>
+                        <div class="slide">
+                            <ul class="vertical group level1">
+                                <li class="item first">
+                                    <a href="https://safestates.site-ym.com/?LocalHealthIVP" id="FrontendMainMenu_m2_m0" class="link">
+                                        <span class="text">Standards for Local Health Departments</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?page=LivabilitySite" id="FrontendMainMenu_m2_m1" class="link">
+                                        <span class="text">Livability & Smart Growth</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?TranspToolkit" id="FrontendMainMenu_m2_m2" class="link">
+                                        <span class="text">Safe, Healthy, & Active Transportation</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?page=NHTSALibrary" id="FrontendMainMenu_m2_m3" class="link">
+                                        <span class="text">Bike and Pedestrian Safety </span>
+                                    </a>
+                                </li>
+                                <li class="item last">
+                                    <a href="https://safestates.site-ym.com/?FieldTriage" id="FrontendMainMenu_m2_m4" class="link">
+                                        <span class="text">Field Triage</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="https://safestates.site-ym.com/?EducationHome" id="FrontendMainMenu_m3" class="link">
+                            <span class="text">Education</span>
+                        </a>
+                        <div class="slide">
+                            <ul class="vertical group level1">
+                                <li class="item first">
+                                    <a href="https://safestates.site-ym.com/?TrainingCenter" id="FrontendMainMenu_m3_m0" class="link">
+                                        <span class="text">Training Center</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/events/event_list.asp" id="FrontendMainMenu_m3_m1" class="link">
+                                        <span class="text">Events Calendar</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/news/" id="FrontendMainMenu_m3_m2" class="link">
+                                        <span class="text">IVP News</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?AnnualMeetings" id="FrontendMainMenu_m3_m3" class="link">
+                                        <span class="text">Annual Meetings</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?SelfStudyTrainings" id="FrontendMainMenu_m3_m4" class="link">
+                                        <span class="text">Self Study Trainings</span>
+                                    </a>
+                                </li>
+                                <li class="item last">
+                                    <a href="https://safestates.site-ym.com/?page=NTICoreCompetencies" id="FrontendMainMenu_m3_m5" class="link">
+                                        <span class="text">NTI Core Competencies</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="https://safestates.site-ym.com/?PolicyHome" id="FrontendMainMenu_m4" class="link">
+                            <span class="text">Policy</span>
+                        </a>
+                        <div class="slide">
+                            <ul class="vertical group level1">
+                                <li class="item first">
+                                    <a href="https://safestates.site-ym.com/?page=SafeStatesPolicy" id="FrontendMainMenu_m4_m0" class="link">
+                                        <span class="text">Our Policy Activities</span>
+                                    </a>
+                                    <div class="slide">
+                                    <ul class="vertical group level2">
+                                        <li class="item first">
+                                            <a href="https://c.ymcdn.com/sites/safestates.site-ym.com/resource/resmgr/imported/2013%20Policy%20Agenda%20-%20Approved%203%2014%2013.pdf" id="FrontendMainMenu_m4_m0_m0" class="link">
+                                                <span class="text">Policy Agenda</span>
+                                            </a>
+                                        </li>
+                                        <li class="item">
+                                            <a href="https://safestates.site-ym.com/?Statements" id="FrontendMainMenu_m4_m0_m1" class="link">
+                                                <span class="text">Policy & Position Statements</span>
+                                            </a>
+                                        </li>
+                                        <li class="item">
+                                            <a href="https://safestates.site-ym.com/?page=LegislativeAlerts" id="FrontendMainMenu_m4_m0_m2" class="link">
+                                                <span class="text">Legislative Alerts</span>
+                                            </a>
+                                        </li>
+                                        <li class="item last">
+                                            <a href="https://safestates.site-ym.com/?PolicyBlog" id="FrontendMainMenu_m4_m0_m3" class="link">
+                                                <span class="text">Policy Blog</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?page=PolicyTools" id="FrontendMainMenu_m4_m1" class="link">
+                                        <span class="text">Policy Tools </span>
+                                    </a>
+                                </li>
+                                <li class="item last">
+                                    <a href="https://safestates.site-ym.com/?IVPN" id="FrontendMainMenu_m4_m2" class="link">
+                                        <span class="text">The Injury & Violence Prevention Network</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="https://safestates.site-ym.com/?page=MembershipHome" id="FrontendMainMenu_m5" class="link">
+                            <span class="text">Members</span>
+                        </a>
+                        <div class="slide">
+                            <ul class="vertical group level1">
+                                <li class="item first">
+                                    <a href="https://safestates.site-ym.com/?MembershipBenefits" id="FrontendMainMenu_m5_m0" class="link">
+                                        <span class="text">Benefits</span>
+                                    </a>
+                                    <div class="slide">
+                                    <ul class="vertical group level2">
+                                        <li class="item first">
+                                            <a href="https://safestates.site-ym.com/?MembershipBenefits" id="FrontendMainMenu_m5_m0_m0" class="link">
+                                                <span class="text">How Membership Benefits You</span>
+                                            </a>
+                                        </li>
+                                        <li class="item">
+                                            <a href="https://safestates.site-ym.com/?MembershipValue" id="FrontendMainMenu_m5_m0_m1" class="link">
+                                                <span class="text">What Our Members Say</span>
+                                            </a>
+                                        </li>
+                                        <li class="item last">
+                                            <a href="https://safestates.site-ym.com/?page=MembershipPricing" id="FrontendMainMenu_m5_m0_m2" class="link">
+                                                <span class="text">Pricing </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?SIGs" id="FrontendMainMenu_m5_m1" class="link">
+                                        <span class="text">Special Interest Groups (SIGs)</span>
+                                    </a>
+                                    <div class="slide">
+                                    <ul class="vertical group level2">
+                                        <li class="item first">
+                                            <a href="https://safestates.site-ym.com/?DisasterEpiSIG" id="FrontendMainMenu_m5_m1_m0" class="link">
+                                                <span class="text">Disaster Epidemiology </span>
+                                            </a>
+                                        </li>
+                                        <li class="item">
+                                            <a href="https://safestates.site-ym.com/?HospitalTraumaSIG" id="FrontendMainMenu_m5_m1_m1" class="link">
+                                                <span class="text">Hospital Injury Prevention</span>
+                                            </a>
+                                        </li>
+                                        <li class="item">
+                                            <a href="https://safestates.site-ym.com/?LocalInjurySIG" id="FrontendMainMenu_m5_m1_m2" class="link">
+                                                <span class="text">Local Injury Prevention</span>
+                                            </a>
+                                        </li>
+                                        <li class="item">
+                                            <a href="https://safestates.site-ym.com/?NVDRSSIG" id="FrontendMainMenu_m5_m1_m3" class="link">
+                                                <span class="text">NVDRS</span>
+                                            </a>
+                                        </li>
+                                        <li class="item">
+                                            <a href="https://safestates.site-ym.com/?PSVPSIG" id="FrontendMainMenu_m5_m1_m4" class="link">
+                                                <span class="text">Partner & Sexual Violence</span>
+                                            </a>
+                                        </li>
+                                        <li class="item last">
+                                            <a href="https://safestates.site-ym.com/?page=StateRepSIG" id="FrontendMainMenu_m5_m1_m5" class="link">
+                                                <span class="text">State Designated Reps</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?JobAnnouncements" id="FrontendMainMenu_m5_m2" class="link">
+                                        <span class="text">IVP Job Announcements</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?page=Exchange" id="FrontendMainMenu_m5_m3" class="link">
+                                        <span class="text">Safe States Exchange</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/search/" id="FrontendMainMenu_m5_m4" class="link">
+                                        <span class="text">Member Directory</span>
+                                    </a>
+                                </li>
+                                <li class="item last">
+                                    <a href="https://safestates.site-ym.com/members/" id="FrontendMainMenu_m5_m5" class="link">
+                                        <span class="text">Your Membership</span>
+                                    </a>
+                                    <div class="slide">
+                                        <ul class="vertical group level2">
+                                            <li class="item first">
+                                                <a href="https://safestates.site-ym.com/members/group_select.asp" id="FrontendMainMenu_m5_m5_m0" class="link">
+                                                    <span class="text">Find a Group</span>
+                                                </a>
+                                            </li>
+                                            <li class="item last">
+                                                <a href="https://safestates.site-ym.com/forums/" id="FrontendMainMenu_m5_m5_m1" class="link">
+                                                    <span class="text">Forums</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item last">
+                        <a href="https://safestates.site-ym.com/?Publications" id="FrontendMainMenu_m6" class="link">
+                            <span class="text">Publications</span>
+                        </a>
+                        <div class="slide">
+                            <ul class="vertical group level1">
+                                <li class="item first">
+                                    <a href="https://safestates.site-ym.com/?page=BuildingSaferStates" id="FrontendMainMenu_m6_m0" class="link">
+                                        <span class="text">Building Safer States</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?SOTS" id="FrontendMainMenu_m6_m1" class="link">
+                                        <span class="text">State of the States </span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?page=ISWReports" id="FrontendMainMenu_m6_m2" class="link">
+                                        <span class="text">Injury Surveillance Workgroup</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?NVDRSStories" id="FrontendMainMenu_m6_m3" class="link">
+                                        <span class="text">NVDRS Stories</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="https://safestates.site-ym.com/?Reports" id="FrontendMainMenu_m6_m4" class="link">
+                                        <span class="text">Special Reports</span>
+                                    </a>
+                                </li>
+                                <li class="item last">
+                                    <a href="https://safestates.site-ym.com/?FactSheets" id="FrontendMainMenu_m6_m5" class="link">
+                                        <span class="text">Fact Sheets & Issue Briefs</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <input type="hidden" id="FrontendMainMenu_Hidden" name="FrontendMainMenu" />
+                <script type="text/javascript">
+                    window["FrontendMainMenu"] = RadMenu.Create("FrontendMainMenu");
+                    window["FrontendMainMenu"].Initialize({"EnableAutoScroll":true,"Skin":"YMPublic","Enabled":true},{"FrontendMainMenu_m0_m0":{"NavigateAfterClick":false},"FrontendMainMenu_m0_m2_m1":{"NavigateAfterClick":false}});
+                </script>
+            </div>
+            <div id="FlexiMenu">
+                <form action="../">
+                    <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+                        <option disabled selected>Menu</option>
+                        <option class="optionGroup" value="https://safestates.site-ym.com/?page=MissionHistory">About Us</option>
+                        <option class="optionChild" value="">More about Safe States</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?page=IVPintheUS">Injuries & Violence in the U.S.</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?StateIVPPrograms">State IVP Programs</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?page=PressRoom">Press Room</option>
+                        <option class="optionGroup" value="https://safestates.site-ym.com/?page=ProgramsHome">Programs </option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?ISW">Injury Surveillance Workgroups</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?page=InnovativeInitiative">Innovative Initiatives</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?STAT">State Technical Assessment Team </option>
+                        <option class="optionGroup" value="https://safestates.site-ym.com/?IVPTools">Tools</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?LocalHealthIVP">Standards for Local Health Departments</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?page=LivabilitySite">Livability & Smart Growth</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?TranspToolkit">Safe, Healthy, & Active Transportation</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?page=NHTSALibrary">Bike and Pedestrian Safety </option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?FieldTriage">Field Triage</option>
+                        <option class="optionGroup" value="https://safestates.site-ym.com/?EducationHome">Education</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?TrainingCenter">Training Center</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/events/event_list.asp">Events Calendar</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/news/">IVP News</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?AnnualMeetings">Annual Meetings</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?SelfStudyTrainings">Self Study Trainings</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?page=NTICoreCompetencies">NTI Core Competencies</option>
+                        <option class="optionGroup" value="https://safestates.site-ym.com/?PolicyHome">Policy</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?page=SafeStatesPolicy">Our Policy Activities</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?page=PolicyTools">Policy Tools </option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?IVPN">The Injury & Violence Prevention Network</option>
+                        <option class="optionGroup" value="https://safestates.site-ym.com/?page=MembershipHome">Members</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?MembershipBenefits">Benefits</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?SIGs">Special Interest Groups (SIGs)</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?JobAnnouncements">IVP Job Announcements</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?page=Exchange">Safe States Exchange</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/search/">Member Directory</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/members/">Your Membership</option>
+                        <option class="optionGroup" value="https://safestates.site-ym.com/?Publications">Publications</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?page=BuildingSaferStates">Building Safer States</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?SOTS">State of the States </option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?page=ISWReports">Injury Surveillance Workgroup</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?NVDRSStories">NVDRS Stories</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?Reports">Special Reports</option>
+                        <option class="optionChild" value="https://safestates.site-ym.com/?FactSheets">Fact Sheets & Issue Briefs</option>
+                    </select>
+                </form>
+                <script type="text/javascript">
+                    $(window).resize(function(){
+                        if ($(window).width() < 769)
+                        {
+                            $('#FlexiMenu').show();
+                            $('#FrontendMainMenu').hide();
+                        }
+                        else
+                        {
+                            $('#FlexiMenu').hide();
+                            $('#FrontendMainMenu').show();
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    <!-- END HEADER -->
+    <!-- BEGIN CONTENT -->
+        <div id="sp-main">
+            <div id="sp-content">
+                <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/favorite.js"></script>
+
+                <style type="text/css">
+                    #tat_table {
+                        z-index:99;
+                    }
+                    #FavoriteEditorTitle {
+                        margin: 0;
+                    }
+                </style>
+                <div class="yui-skin-sam">
+                    <div id="FavoriteOptsPanel" style="visibility:hidden;">
+                        <div id="FavoriteOptsPanelBody" class="bd">
+                            <div id="FormErrors" style="display:none">
+                                <div class="infobox">
+                                    <ul id="FormErrorList" class="redalert"></ul>
+                                </div>
+                                <br>
+                            </div>
+                            <form id="FavoriteEditor" name="FavoriteEditor" onsubmit="return FavoriteEditor_Submit(this)" style="display:none; margin: 0 10px 0 10px;">
+                                <input type="hidden" id="FavoriteID" name="FavoriteID" value="">
+                                <input type="hidden" id="strFavoriteTypeID_FK" name="strFavoriteTypeID_FK" value="">
+                                <input type="hidden" id="strFavoriteParameters" name="strFavoriteParameters" value="">
+                                <input type="hidden" name="strCommand" value="">
+                                <input type="hidden" id="blnFavoriteReload" value="">
+                                <table border="0" cellspacing="12" cellpadding="0">
+                                    <tr>
+                                        <td align="center">
+                                            <img src="https://safestates.site-ym.com/global_graphics/icons/star_32x32.gif" border="0" width="32" height="32">
+                                        </td>
+                                        <td>
+                                            <h2 id="FavoriteEditorTitle">
+                                                Edit This Favorite
+                                            </h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name:</td>
+                                        <td>
+                                            <input type="text" id="strTitle" name="strTitle" value="" size="40" maxlength="100" />
+                                            <input TYPE="hidden" NAME="ERR_strTitle" VALUE="strTitle|Name|20|1||100">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Category:</td>
+                                        <td>
+                                            <input type="text" id="strCategory" name="strCategory" value="" size="40" autocomplete="off" maxlength="100" />
+                                            <input TYPE="hidden" NAME="ERR_strCategory" VALUE="strCategory|Category|20|0||100">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Share:</td>
+                                        <td>
+                                            <input id="blnIsPrivate0" type="radio" value="0" name="blnIsPrivate"/><label for="blnIsPrivate0">Yes</label>
+                                            <input id="blnIsPrivate1" type="radio" value="1" name="blnIsPrivate"/><label for="blnIsPrivate1">No, Keep Private</label>
+                                            <input TYPE="hidden" NAME="ERR_blnIsPrivate" VALUE="blnIsPrivate|Share -- Yes/No, Keep Private|20|1||0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center" style="padding-top:10px;">
+                                            <input type="submit" id="FavoriteEditor_btnSubmit" value="Submit" class="formbutton"
+                                                onclick="return FavoriteEditor_btnSubmit_OnClick(this);">
+                                            <input type="button" value="Cancel" class="formbutton"
+                                                onclick="YAHOO.container.FavoriteOpts.hide();">
+                                            <input type="submit" id="FavoriteEditor_btnDelete" value="Delete" class="formbutton" style="display:none;"
+                                                onclick="return FavoriteEditor_btnDelete_OnClick(this);">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="__ASPVIEWSTATE" value="1caee8ce81d5fa50f49ec0c9dce25904261d94d1fbd3b7f051babbd67b278fe7a916f15a53fb8660483bdb3347ad91eb1039838f5f10b6f03a7f3ec069f6f0fb45897ed54543b840a2e440165fa0d63c51c3331d9b63c3d5eab2d3f07fb2bb9afee91c636ebad993541fc6d188badb57fd93584fe3381b04449f95b24e13e219">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/hit_highlighter.js"></script>
+                <script type="text/javascript">
+                function Window_OnLoad()
+                {
+                    highlightDtSearchTerms('CustomPageBody');
+                    highlightDtSearchTerms('ResourceCollection');
+                }
+
+                addEventHandler_OnLoad(Window_OnLoad);
+                </script>
+
+                <style type="text/css">
+                .ScoreControl
+                {
+                    display:block;
+                    float:left;
+                }
+                </style>
+
+                <table id="SpSubHead" border="0" cellpadding="0" cellspacing="0" style="padding-left:10px; padding-right:10px;">
+                    <tr>
+                        <td id="SpTitleBar">
+                            Livability & Smart Growth Assessment Tool Database
+                        </td>
+                    </tr>
+                </table>
+
+                <table id="SpContent" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td id="SpContent_Container">
+
+                            <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/ContentScores.js"></script>
+
+                            <div id="CustomPageBody">
+                                <p align="center">&nbsp;</p>
+                                <h3 align="center">
+                                    <span style="color: #FF0000;">
+                                        This site is under construction and will be available by
+                                        November 30, 2013. Thank you for your patience!
+                                    </span>
+                                </h3>
+                                <p align="center">&nbsp;</p>
+                                <p align="center"></p>
+                                <p align="center">&nbsp;</p>
+                                <p align="left">
+                                    <img style="margin-bottom: 10px; margin-right: 10px;" alt="" title=""
+                                         src="https://safestates.site-ym.com/associations/5805/files/safestates_skyline_icon.jpg"
+                                         align="left" width="125">
+                                    Hosted by the Safe States Alliance, the Livability &amp; Smart Growth
+                                    Assessment Tools Database provides centralized access to basic
+                                    assessment tools and checklists that can assist users with evaluating
+                                    their communities' degree of livability and provide essential
+                                    information needed to create safer and healthier neighborhoods. Click
+                                    here to access the database.
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="bottomcontentarea" style="height: 10px;"></div>
+        </div>
+    </div>
+    <!-- END CONTENT -->
+    <!-- BEGIN FOOTER -->
+    <div id="foot"><!-- footer --></div>
+
+    <div id="FooterContentArea"><!--YMPSTITLE=TgBBAA==/YMPSTITLE-->
+        <div id="footer">
+            <div id="col-1">
+                <div id="foot-head">
+                    Connect
+                </div>
+                <a href="/">Members</a><br>
+                <a href="/">Partners</a><br>
+                <a href="/">Policy Makers</a>
+                <br><a href="/">Public</a>
+            </div>
+            <div id="col-2">
+                <div id="foot-head">
+                    Quicklinks
+                </div>
+                <a href="https://safestates.site-ym.com/?MembershipBenefits">Member Benefits</a><br>
+                <a href="https://safestates.site-ym.com/general/register_member_type.asp?">Join </a><br>
+                <a href="https://safestates.site-ym.com/search/">Member Directory</a><br>
+                <a href="https://safestates.site-ym.com/?page=Exchange">Safe States Exchange</a><br>
+                <a href="https://safestates.site-ym.com/events/event_list.asp">Events</a><br>
+                <a href="https://safestates.site-ym.com/news/">News &amp; Press</a><br>
+                <a href="https://safestates.site-ym.com/?PolicyHome">Policy</a>
+            </div>
+            <div id="col-3">
+                <div id="foot-head">
+                    Contact
+                </div>
+                <p>
+                    The Safe States Alliance<br>
+                    2200 Century Parkway, Suite 700<br>
+                    Atlanta, Georgia 30345<br>
+                    (707) 690-9000<br>
+                    <a href="mailto:info@safestates.org">info@safestates.org</a>
+                </p>
+            </div>
+            <div id="col-4">
+                <div id="foot-head">
+                    Social
+                </div>
+                <a href="https://twitter.com/SafeStates" target="_blank">
+                    <img src="https://safestates.site-ym.com/graphics/twitter.png">
+                </a>
+                <a href="http://www.linkedin.com/groups/Safe-States-Alliance-1840307/about" target="_blank">
+                    <img src="https://safestates.site-ym.com/graphics/linkedin.png">
+                </a>
+            </div>
+            <div id="col-5">
+                <div id="foot-head">
+                    Mission &amp; Vision Statements
+                </div>
+                <p>
+                    The Safe States Alliance is a national non-profit 501(c)(3) organization and professional association
+                    whose mission is to strengthen the practice of injury and violence prevention.
+                </p>
+                <br>
+                <p>Our vision is to be the recognized leader and driving force in understanding and preventing injuries
+                    and violence.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="icopyright">
+        <div id="icopyright-inner">
+            Association Management Software Powered by
+            <a href='http://www.yourmembership.com/'>
+                YourMembership.com<span style='font-size:11px'>&reg;</span>
+            </a> &nbsp;::&nbsp;
+            <a href='https://safestates.site-ym.com/ams/legal-privacy.htm'>
+                Legal/Privacy
+            </a><!-- Copyright (c) 1998-2013 YourMembership.com Inc. All Rights Reserved.
+                    Copyright: Certain elements of this website are: Copyright (c) 1998-2013, YourMembership.com,
+                    Incorporated. YourMembership.com, Incorporated provides a limited license to use its Copyrights to the
+                    entity from whose web page you are viewing. Certain elements of this website may also be copyrighted by
+                    that entity; please see its Terms of Use or contact the organization for more information. General
+                    information about copyright laws can be found at: http://www.copyright.gov/. For more specific
+                    information, please consult an attorney. -->
+        </div>
+    </div>
+</body>
+</html>
+

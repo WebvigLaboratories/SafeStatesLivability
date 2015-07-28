@@ -1,0 +1,100 @@
+{% extends "new-index.html" %}
+{% load staticfiles %}
+
+{% block body %}
+<table id="SpContent" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="SpContent_Container">
+
+            <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/ContentScores.js"></script>
+
+            <div id="CustomPageBody">
+                <table border="0" style="margin-left: auto; margin-right: auto;">
+                    <tr>
+                        <td align="center">
+                            <table align="center" style="width: 90%;">
+                                <tr>
+                                    <td>
+                                        <table border="0">
+                                        <tr>
+                                            <td align="center">
+                                                <p>
+                                                    <br><img src="{% static "img/safestates_skyline.jpg" %}" alt="" width="755" height="220">
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {% if numResults %}
+                                                <p style="font-size: 1.1em;" id="num_results">Your search returned <strong>{{ numResults }}</strong> results:</p>
+                                                {% else %}
+                                                <p style="font-size: 1.1em;">Below are the results of your search:</p>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table border="0" cellspacing="3" cellpadding="3" width="755">
+                                        <thead>
+                                            <tr>
+                                                <th style="font-size: 1.2em;" width="50%"><strong>Tool Name</strong></th>
+                                                <th style="font-size: 1.2em;" width="40%"><strong>Author</strong></th>
+                                                <th style="font-size: 1.2em;" width="10%"><strong>Year Developed</strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan=3><hr></td>
+                                            </tr>
+                                            {% for result in lResults %}
+                                            <tr>
+                                                <td>{{ result.name }}</td>
+                                                <td>{{ result.author }}</td>
+                                                <td>
+                                                    {% if result.year %}
+                                                        {{ result.year }}
+                                                    {% else %}
+                                                        N/A
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" style="font-size: 1.1em; padding-top: 10px;">{{ result.description }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <a href="{{ result.url }}" target="_blank">{{ result.url }}</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan=3 style="padding-top: 10px;"><hr></td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <p align="center">
+                                        <a href="{% url "questions" %}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('New Search','','{% static "btn-new-search-hover.png" %}',1)">
+                                            <img src="{% static "img/btn-new-search.png" %}" alt="New Search" name="New Search" width="103" height="23" border="0">
+                                        </a>
+                                    </p>
+                                    <p align="center">
+                                        <a href="{% url "home" %}">
+                                            Return To Database Home
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                  <td>&nbsp;</td>
+                              </tr>
+                            </table>
+                        </td>
+
+
+
+			</tr>
+
+</table>
+            </div>
+        </td>
+    </tr>
+</table>
+{% endblock %}
