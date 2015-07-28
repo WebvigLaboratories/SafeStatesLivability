@@ -26,10 +26,8 @@ if socket.gethostname() in DEVELOPMENT_HOSTS:
 else:
     DEVELOPMENT = False
     ALLOWED_HOSTS = [
-        "alliedjet.com",
-        "www.alliedjet.com",
-        "alliedjetshares.com",
-        "www.alliedjetshares.com",
+        "livability.safestates.org",
+        "livability.safestates.com",
     ]
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
