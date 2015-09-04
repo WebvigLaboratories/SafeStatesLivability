@@ -27,13 +27,13 @@
 	color:#03F !important;	
 }
 .submit {
-	background: url(http://media.fratellicomputing.com/images/safestates/btn-submit.png) no-repeat;
+	background: url("../static/img/btn-submit.png") no-repeat;
 	height: 23px;
 	width: 72px;
 	border: none;
 }
 .submit:hover {
-		background: url(http://media.fratellicomputing.com/images/safestates/btn-submit-hover.png) no-repeat;
+		background: url("../static/img/btn-submit-hover.png") no-repeat;
 	}
 	#qt_header {
 	color: #FFF;
