@@ -27,13 +27,13 @@
 	color:#03F !important;	
 }
 .submit {
-	background: url("../static/img/btn-submit.png") no-repeat;
+	background: url("../img/btn-submit.png") no-repeat;
 	height: 23px;
 	width: 72px;
 	border: none;
 }
 .submit:hover {
-		background: url("../static/img/btn-submit-hover.png") no-repeat;
+		background: url("../img/btn-submit-hover.png") no-repeat;
 	}
 	#qt_header {
 	color: #FFF;
