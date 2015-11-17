@@ -25,6 +25,9 @@ class Community_Size(models.Model):
     class Meta:
         ordering = ['toolname__name']
 
+    def selection_verbose(self):
+        return dict(Community_Size.SIZE_CHOICES)[self.selection]
+
 class Assessment_Focus(models.Model):
     FOCUS_CHOICES = (
         (1, '1-Development or Transportation Projects'),
@@ -40,6 +43,9 @@ class Assessment_Focus(models.Model):
     class Meta:
         ordering = ['toolname__name']
 
+    def selection_verbose(self):
+        return dict(Assessment_Focus.FOCUS_CHOICES)[self.selection]
+
 class Audience(models.Model):
     AUDIENCE_CHOICES = (
         (1, '1-Elected Officials'),
@@ -54,6 +60,9 @@ class Audience(models.Model):
 
     class Meta:
         ordering = ['toolname__name']
+
+    def selection_verbose(self):
+        return dict(Audience.AUDIENCE_CHOICES)[self.selection]
 
 class Topics(models.Model):
     TOPIC_CHOICES = (
@@ -71,3 +80,16 @@ class Topics(models.Model):
 
     class Meta:
         ordering = ['toolname__name']
+
+    def transportation_verbose(self):
+        return dict(Topics.TOPIC_CHOICES)[self.q_transportation]
+    def housing_verbose(self):
+        return dict(Topics.TOPIC_CHOICES)[self.q_housing]
+    def investment_verbose(self):
+        return dict(Topics.TOPIC_CHOICES)[self.q_investment]
+    def compact_verbose(self):
+        return dict(Topics.TOPIC_CHOICES)[self.q_compact]
+    def health_verbose(self):
+        return dict(Topics.TOPIC_CHOICES)[self.q_health]
+    def preservation_verbose(self):
+        return dict(Topics.TOPIC_CHOICES)[self.q_preservation]

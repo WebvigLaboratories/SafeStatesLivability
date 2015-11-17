@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
 
 urlpatterns = [
+    url('^accounts/', include('django.contrib.auth.urls')),
     url(r'^fratelliadmin/', include(admin.site.urls)),
 
     url('^$', TemplateView.as_view(template_name="new-index.html"), name="home"),
-    url(r"^search/", include('livability.urls')),
+    url(r'^search/', include('livability.urls')),
+    url(r'^dbadmin/', include('db_admin.urls')),
 ]

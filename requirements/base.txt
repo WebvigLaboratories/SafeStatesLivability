@@ -1,5 +1,5 @@
 Django
-MySQL-python
+#MySQL-python
 
 # Testing
 selenium

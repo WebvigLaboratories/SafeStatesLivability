@@ -1,0 +1,92 @@
+{% extends "new-index.html" %}
+{% load staticfiles %}
+
+{% block body %}
+<table id="SpContent" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="SpContent_Container">
+
+            <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/ContentScores.js"></script>
+
+            <div id="CustomPageBody">
+                <h3>Database Administration - Show Entry</h3>
+                <br />
+                <h4>Tool Information</h4>
+                <a href="{% url 'admin_edit' tool.id %}">Edit</a>
+                <hr />
+                <table style="width: 100%">
+                    <tr style="vertical-align: top">
+                        <td style="width: 20%"><strong>Year Developed:</strong></td>
+                        <td>{{ tool.year_developed }}</td>
+                    </tr>
+                    <tr style="vertical-align: top">
+                        <td style="width: 20%"><strong>Tool Name:</strong></td>
+                        <td>{{ tool.name }}</td>
+                    </tr>
+                    <tr style="vertical-align: top">
+                        <td style="width: 20%"><strong>Tool Author:</strong></td>
+                        <td>{{ tool.author }}</td>
+                    </tr>
+                    <tr style="vertical-align: top">
+                        <td style="width: 20%"><strong>URL:</strong></td>
+                        <td><a href="{{ tool.url }}" target="_blank">{{ tool.url }}</a></td>
+                    </tr>
+                    <tr style="vertical-align: top">
+                        <td style="width: 20%"><strong>Tool Description:</strong></td>
+                        <td>{{ tool.description }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan=2><hr></td>
+                    </tr>
+                    <tr style="vertical-align: top">
+                        <td style="width: 20%"><strong>Community Size:</strong></td>
+                        <td>
+                            {% for item in communitySize %}
+                            {{ item.selection_verbose }}<br />
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan=2><hr></td>
+                    </tr>
+                    <tr style="vertical-align: top">
+                        <td style="width: 20%"><strong>Assessment Focus:</strong></td>
+                        <td>
+                            {% for item in assessmentFocus %}
+                            {{ item.selection_verbose }}<br />
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan=2><hr></td>
+                    </tr>
+                    <tr style="vertical-align: top">
+                        <td style="width: 20%"><strong>Audience:</strong></td>
+                        <td>
+                            {% for item in audience %}
+                            {{ item.selection_verbose }}<br />
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan=2><hr></td>
+                    </tr>
+                    <tr style="vertical-align: top">
+                        <td style="width: 20%"><strong>Topics:</strong></td>
+                        <td>
+                            Transportation: {{ topics.transportation_verbose }}<br />
+                            Housing: {{ topics.housing_verbose }}<br />
+                            Investment: {{ topics.investment_verbose }}<br />
+                            Compact: {{ topics.compact_verbose }}<br />
+                            Health: {{ topics.health_verbose }}<br />
+                            Preservation: {{ topics.preservation_verbose }}
+                        </td>
+                    </tr>
+                </table>
+
+                <a href="{% url 'admin_list' %}">Return to list</a>
+            </div>
+        </td>
+    </tr>
+</table>
+{% endblock %}
