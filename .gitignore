@@ -1,7 +1,9 @@
+*.cfg
 *.db
+*.json
 *.pyc
 SafeStates.iml
 .idea/
 .coverage
+.DS_Store
 htmlcov/
-*.cfg
