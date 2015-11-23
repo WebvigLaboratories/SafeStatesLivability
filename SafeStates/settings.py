@@ -23,28 +23,25 @@ DEVELOPMENT_HOSTS = [
 if socket.gethostname() in DEVELOPMENT_HOSTS:
     DEVELOPMENT = True
     ALLOWED_HOSTS = []
+    DBNAME = "safestates_test.db"
 else:
     DEVELOPMENT = False
     ALLOWED_HOSTS = [
         "livability.safestates.org",
         "livability.safestates.com",
     ]
+    DBNAME = "safestates.db"
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CONFIG_LOCATION = os.path.join(BASE_DIR, "SafeStates/SafeStates.cfg")
-config = ConfigParser()
-config.read(CONFIG_LOCATION)
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config.get("settings", "secret_key")
+SECRET_KEY = "sf%&thp!))y5$pd=2%5vmh9q4*)(%pto_1a8j92xoj^$!021(u"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = DEVELOPMENT
-
 
 # Application definition
 
@@ -94,21 +91,11 @@ WSGI_APPLICATION = 'SafeStates.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-DBTYPE = config.get("settings", "db_engine")
-DBNAME = config.get("settings", "db_name")
-DBUSER = config.get("settings", "db_user")
-DBPASSWD = config.get("settings", "db_passwd")
-DBHOST = config.get("settings", "db_host")
-DBPORT = config.get("settings", "db_port")
 
 DATABASES = {
     'default': {
-        'ENGINE': DBTYPE,
+        'ENGINE': "django.db.backends.sqlite3",
         'NAME': DBNAME,
-        'USER': DBUSER,
-        'PASSWORD': DBPASSWD,
-        'HOST': DBHOST,
-        'PORT': DBPORT,
     }
 }
 
