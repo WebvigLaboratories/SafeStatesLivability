@@ -4,10 +4,11 @@ from models import *
 
 # Create your tests here.
 class ModelTest(TestCase):
-    def get_tool(self, name="Active Community Schools Workbook"):
-        return Tools.objects.get(name=name)
+
+    def create_tool(self, name="Test tool", url="http://test.com"):
+        return Tools.objects.create(name=name, url=url)
 
     def test_tool_get(self):
-        tool = self.get_tool()
+        tool = self.create_tool()
         self.assertTrue(isinstance(tool, Tools))
-        self.asserEqual(tool.__unicode__(), tool.name)
+        self.assertEqual(tool.__unicode__(), tool.name)
