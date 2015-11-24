@@ -10,5 +10,5 @@ class ModelTest(TestCase):
 
     def test_tool_get(self):
         tool = self.create_tool()
-        self.assertTrue(isinstance(tool, Tools))
+        self.assertTrue(isinstance(tool, "test"))
         self.assertEqual(tool.__unicode__(), tool.name)
