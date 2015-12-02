@@ -1,5 +1,4 @@
 *.cfg
-safestates.db
 *.json
 *.pyc
 SafeStates.iml

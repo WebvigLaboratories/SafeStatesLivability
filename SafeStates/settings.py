@@ -23,7 +23,7 @@ DEVELOPMENT_HOSTS = [
 if socket.gethostname() in DEVELOPMENT_HOSTS:
     DEVELOPMENT = True
     ALLOWED_HOSTS = []
-    DBNAME = "safestates_test.db"
+    DBNAME = "safestates.db" #Changed to remove test db
 else:
     DEVELOPMENT = False
     ALLOWED_HOSTS = [
