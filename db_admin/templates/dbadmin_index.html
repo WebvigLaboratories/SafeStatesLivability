@@ -1,0 +1,203 @@
+{% load staticfiles %}
+{% include '_dbadmin_page_header.html' %}
+
+<body id="PageBody" onunload="try{if(m_blnDoBodyUnload) Body_OnUnload();}catch(e){}">
+	<div id="icontainer">
+
+    {% include '_header.html' %}
+
+        <div id="sp-main">
+            <div id="sp-content">
+                <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/favorite.js"></script>
+
+                <style type="text/css">
+                    #tat_table {
+                        z-index:99;
+                    }
+                    #FavoriteEditorTitle {
+                        margin: 0;
+                    }
+                </style>
+                <div class="yui-skin-sam">
+                    <div id="FavoriteOptsPanel" style="visibility:hidden;">
+                        <div id="FavoriteOptsPanelBody" class="bd">
+                            <div id="FormErrors" style="display:none">
+                                <div class="infobox">
+                                    <ul id="FormErrorList" class="redalert"></ul>
+                                </div>
+                                <br>
+                            </div>
+                            <form id="FavoriteEditor" name="FavoriteEditor" onsubmit="return FavoriteEditor_Submit(this)" style="display:none; margin: 0 10px 0 10px;">
+                                <input type="hidden" id="FavoriteID" name="FavoriteID" value="">
+                                <input type="hidden" id="strFavoriteTypeID_FK" name="strFavoriteTypeID_FK" value="">
+                                <input type="hidden" id="strFavoriteParameters" name="strFavoriteParameters" value="">
+                                <input type="hidden" name="strCommand" value="">
+                                <input type="hidden" id="blnFavoriteReload" value="">
+                                <table border="0" cellspacing="12" cellpadding="0">
+                                    <tr>
+                                        <td align="center">
+                                            <img src="https://safestates.site-ym.com/global_graphics/icons/star_32x32.gif" border="0" width="32" height="32">
+                                        </td>
+                                        <td>
+                                            <h2 id="FavoriteEditorTitle">
+                                                Edit This Favorite
+                                            </h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name:</td>
+                                        <td>
+                                            <input type="text" id="strTitle" name="strTitle" value="" size="40" maxlength="100" />
+                                            <input TYPE="hidden" NAME="ERR_strTitle" VALUE="strTitle|Name|20|1||100">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Category:</td>
+                                        <td>
+                                            <input type="text" id="strCategory" name="strCategory" value="" size="40" autocomplete="off" maxlength="100" />
+                                            <input TYPE="hidden" NAME="ERR_strCategory" VALUE="strCategory|Category|20|0||100">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Share:</td>
+                                        <td>
+                                            <input id="blnIsPrivate0" type="radio" value="0" name="blnIsPrivate"/><label for="blnIsPrivate0">Yes</label>
+                                            <input id="blnIsPrivate1" type="radio" value="1" name="blnIsPrivate"/><label for="blnIsPrivate1">No, Keep Private</label>
+                                            <input TYPE="hidden" NAME="ERR_blnIsPrivate" VALUE="blnIsPrivate|Share -- Yes/No, Keep Private|20|1||0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center" style="padding-top:10px;">
+                                            <input type="submit" id="FavoriteEditor_btnSubmit" value="Submit" class="formbutton"
+                                                onclick="return FavoriteEditor_btnSubmit_OnClick(this);">
+                                            <input type="button" value="Cancel" class="formbutton"
+                                                onclick="YAHOO.container.FavoriteOpts.hide();">
+                                            <input type="submit" id="FavoriteEditor_btnDelete" value="Delete" class="formbutton" style="display:none;"
+                                                onclick="return FavoriteEditor_btnDelete_OnClick(this);">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="__ASPVIEWSTATE" value="1caee8ce81d5fa50f49ec0c9dce25904261d94d1fbd3b7f051babbd67b278fe7a916f15a53fb8660483bdb3347ad91eb1039838f5f10b6f03a7f3ec069f6f0fb45897ed54543b840a2e440165fa0d63c51c3331d9b63c3d5eab2d3f07fb2bb9afee91c636ebad993541fc6d188badb57fd93584fe3381b04449f95b24e13e219">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/hit_highlighter.js"></script>
+                <script type="text/javascript">
+                function Window_OnLoad()
+                {
+                    highlightDtSearchTerms('CustomPageBody');
+                    highlightDtSearchTerms('ResourceCollection');
+                }
+
+                addEventHandler_OnLoad(Window_OnLoad);
+                </script>
+
+                <style type="text/css">
+                .ScoreControl
+                {
+                    display:block;
+                    float:left;
+                }
+                </style>
+
+                <table id="SpSubHead" border="0" cellpadding="0" cellspacing="0" style="padding-left:10px; padding-right:10px;">
+                    <tr>
+                        <td id="SpTitleBar">
+                            Livability & Smart Growth Assessment Tool Database
+                        </td>
+                    </tr>
+                </table>
+
+                {% block body %}
+                <table id="SpContent" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td id="SpContent_Container">
+
+                            <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/ContentScores.js"></script>
+
+                            <div id="CustomPageBody">
+            	                <table border="0">
+                                    <tr>
+                                        <td align="center">
+                                		    <p>
+                                                <img src="{% static "img/safestates_skyline.jpg" %}" alt="" width="755" height="220">
+                                            </p>
+                                	    </td>
+                                    </tr>
+                	                <tr>
+                    	                <td>
+                                            <p>&nbsp;</p>
+                                            <p style="font-size: 1.2em;">
+                                                Hosted by the Safe States Alliance, the<em> Livability & Smart Growth
+                                                Assessment Tools Database </em>provides centralized access to basic
+                                                assessment tools and checklists that can assist users with evaluating
+                                                their communities' degree of livability and provide essential
+                                                information needed to create safer and healthier neighborhoods.
+                                            </p><br />
+						                    <p style="font-size: 1.2em;">
+                                                The tools within this database are searchable by community size,
+                                                assessment type, user role, and six topic areas developed as a
+                                                practical combination of the
+                                                <a href="http://www.transportation.gov/livability/101" target="_blank">Livability</a>
+                                                and <a href="http://www.epa.gov/dced/about_sg.htm#principles" target="_blank">Smart Growth</a>
+                                                principles.
+                                            </p><br />
+                                            <p align="center" style="font-size: 1.2em;">
+                                                To begin a search of all available assessment tools,
+                                                click &quot;<strong>Begin Search</strong>.&quot;
+                                            </p>
+                                            <p align="center">
+                                                <a href="{% url "questions" %}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Begin Search','','{% static "img/btn-begin-search-hover.png" %}',1)" id="begin_search">
+                                                    <img src="{% static "img/btn-begin-search.png" %}" alt="Begin Search" name="Begin Search" width="112" height="23" border="0">
+                                                </a>
+                                            </p>
+                                            <p>&nbsp;</p>
+                                            <p style="font-size: 1.2em;">
+                                                <strong>
+                                                    <span style="color: rgb(39,56,125);">
+                                                        Helpful Links &amp; Additional Resources<br>
+                                                    </span>
+                                                </strong><br />
+                                                <a id="link_text" href="https://safestates.site-ym.com/?HelpfulLinksSafety">
+                                                    Click here
+                                                </a>
+                                                to access helpful links and resources related to health, livability,
+                                                and Smart Growth.
+                                            </p><br />
+                                            <p style="font-size: 1.2em;">
+                                                Would you like to suggest a tool for the <i>Livability
+                                                &amp; Smart Growth Assessment Tools Database</i>?<br />
+                                                <a id="link_text" href="mailto:info@safestates.org">
+                                                    Send an email to the Safe States Alliance.
+                                                </a>
+                                            </p>
+                                            <br />
+                                            <p style="font-size: 0.7em; font-style: italic;">
+                                                *Please note that any views expressed within and by
+                                                the resources listed in the Livability &amp; Smart Growth Assessment
+                                                Tools Database are those of the authors and do not necessarily represent
+                                                those of the Safe States Alliance.
+                                                <a id="link_text" href="{% static "files/Livability_Tools_Inventory_Changes-Jan_2014.pdf" %}">
+                                                    Click here
+                                                </a>
+                                                for a full listing of the resources available in the Livability &amp;
+                                                Smart Growth Assessment Tools Database.
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                {% endblock %}
+            </div>
+            <div id="bottomcontentarea" style="height: 10px;"></div>
+        </div>
+    </div>
+
+{% include '_footer.html' %}
+</body>
+</html>

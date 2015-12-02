@@ -1,4 +1,4 @@
-{% extends "new-index.html" %}
+{% extends "dbadmin_index.html" %}
 {% load staticfiles %}
 
 {% block body %}
@@ -10,12 +10,13 @@
 
             <div id="CustomPageBody">
                 <h3>Database Administration - Edit Entry</h3>
-                                <br />
+                {% include '_messages.html' %}
+                <br />
                 <h4>Tool Information</h4>
                 <a href="#">Delete This Entry</a>
                 <hr />
                 {{ form.non_field_errors }}
-                <form href="#" action="POST">{% csrf_token %}
+                <form action="." method="POST">{% csrf_token %}
                     <table style="width: 100%">
                         <tr style="vertical-align: top">
                             <td style="width: 20%"><strong><label for="id_yearDeveloped">Year Developed:</label></strong></td>
@@ -35,7 +36,7 @@
                         </tr>
                         <tr style="vertical-align: top">
                             <td style="width: 20%"><strong><label for="id_description">Tool Description:</label></strong></td>
-                            <td>{{ form.description }}</td>
+                            <td>{{ form.description }} {{ form.description.error_messages }}</td>
                         </tr>
                         <tr>
                             <td colspan=2><hr></td>
@@ -43,9 +44,16 @@
                         <tr style="vertical-align: top">
                             <td style="width: 20%"><strong><label for="id_communitySize">Community Size:</label></strong></td>
                             <td>
-                                {% for item in communitySize %}
-                                {{ item.selection_verbose }}<br />
-                                {% endfor %}
+                                <table>
+                                    <tr>
+                                        <td>{{ form.communitySizeUrban }} {{ form.communitySizeUrban.error_messages }}</td>
+                                        <td>- 1.) Urban</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.communitySizeRural }} {{ form.communitySizeRural.error_messages }}</td>
+                                        <td>- 2.) Rural</td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                         <tr>
@@ -54,9 +62,24 @@
                         <tr style="vertical-align: top">
                             <td style="width: 20%"><strong>Assessment Focus:</strong></td>
                             <td>
-                                {% for item in assessmentFocus %}
-                                {{ item.selection_verbose }}<br />
-                                {% endfor %}
+                                <table>
+                                    <tr>
+                                        <td>{{ form.assessmentFocusDevelopment }} {{ form.assessmentFocusDevelopment.error_messages }}</td>
+                                        <td>- 1.) Development or Transportation Projects</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.assessmentFocusPhysical }}  {{ form.assessmentFocusPhysical.error_messages }}</td>
+                                        <td>- 2.) Physical Environment of a Community, Neighborhood, or School</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.assessmentFocusPolicy}} {{ form.assessmentFocusPolicy.error_messages }}</td>
+                                        <td>- 3.) Policy, Plan, Codes, or Standards</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.assessmentFocusWalkability }} {{ form.assessmentFocusWalkability.error_messages }}</td>
+                                        <td>- 4.) Walkability, Bikability, and/or Transit Access</td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                         <tr>
@@ -65,9 +88,28 @@
                         <tr style="vertical-align: top">
                             <td style="width: 20%"><strong>Audience:</strong></td>
                             <td>
-                                {% for item in audience %}
-                                {{ item.selection_verbose }}<br />
-                                {% endfor %}
+                                <table>
+                                    <tr>
+                                        <td>{{ form.audienceElected }} {{ form.audienceElected.error_messages }}</td>
+                                        <td>- 1.) Elected Officials</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.audienceLaypersons }} {{ form.audienceLaypersons.error_messages }}</td>
+                                        <td>- 2.) Laypersons</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.audiencePlanners }} {{ form.audiencePlanners.error_messages }}</td>
+                                        <td>- 3.) Planners</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.audienceProfessionals }} {{ form.audienceProfessionals.error_messages }}</td>
+                                        <td>- 4.) PH Professionals</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.audienceSchool }} {{ form.audienceSchool.error_messages }}</td>
+                                        <td>- 5.) School Officials</td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                         <tr>
@@ -76,15 +118,36 @@
                         <tr style="vertical-align: top">
                             <td style="width: 20%"><strong>Topics:</strong></td>
                             <td>
-                                Transportation: {{ topics.transportation_verbose }}<br />
-                                Housing: {{ topics.housing_verbose }}<br />
-                                Investment: {{ topics.investment_verbose }}<br />
-                                Compact: {{ topics.compact_verbose }}<br />
-                                Health: {{ topics.health_verbose }}<br />
-                                Preservation: {{ topics.preservation_verbose }}
+                                <table>
+                                    <tr>
+                                        <td>{{ form.topicTransportation }} {{ form.topicTransportation.error_messages }}</td>
+                                        <td>- Transportation</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.topicHousing }} {{ form.topicHousing.error_messages }}</td>
+                                        <td>- Housing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.topicInvestment }} {{ form.topicInvestment.error_messages }}</td>
+                                        <td>- Investment</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.topicCompact }} {{ form.topicCompact.error_messages }}</td>
+                                        <td>- Compact</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.topicHealth }} {{ form.topicHealth.error_messages }}</td>
+                                        <td>- Health</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form.topicPreservation }} {{ form.topicPreservation.error_messages }}</td>
+                                        <td>- Preservation</td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                     </table>
+                    <button type="submit">Save</button> | <button type="button" onclick="window.location = '{% url 'admin_show' entryId %}' ">Cancel</button><br /><br />
                 </form>
                 <a href="{% url 'admin_list' %}">Return to list</a>
             </div>

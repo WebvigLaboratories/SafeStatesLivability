@@ -1,4 +1,4 @@
-{% extends "new-index.html" %}
+{% extends "dbadmin_index.html" %}
 {% load staticfiles %}
 
 {% block body %}
@@ -10,6 +10,7 @@
 
             <div id="CustomPageBody">
                 <h3>Database Administration - List Entries</h3>
+                {% include '_messages.html' %}
                 <table>
                     <tr>
                         <th><strong>Tool Name</strong></th>
