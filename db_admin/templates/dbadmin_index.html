@@ -110,94 +110,96 @@
                     </tr>
                 </table>
 
-                {% block body %}
-                <table id="SpContent" border="0" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td id="SpContent_Container">
+                <div class="container-fluid">
+                    {% block body %}
+                    <table id="SpContent" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td id="SpContent_Container">
 
-                            <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/ContentScores.js"></script>
+                                <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/ContentScores.js"></script>
 
-                            <div id="CustomPageBody">
-            	                <table border="0">
-                                    <tr>
-                                        <td align="center">
-                                		    <p>
-                                                <img src="{% static "img/safestates_skyline.jpg" %}" alt="" width="755" height="220">
-                                            </p>
-                                	    </td>
-                                    </tr>
-                	                <tr>
-                    	                <td>
-                                            <p>&nbsp;</p>
-                                            <p style="font-size: 1.2em;">
-                                                Hosted by the Safe States Alliance, the<em> Livability & Smart Growth
-                                                Assessment Tools Database </em>provides centralized access to basic
-                                                assessment tools and checklists that can assist users with evaluating
-                                                their communities' degree of livability and provide essential
-                                                information needed to create safer and healthier neighborhoods.
-                                            </p><br />
-						                    <p style="font-size: 1.2em;">
-                                                The tools within this database are searchable by community size,
-                                                assessment type, user role, and six topic areas developed as a
-                                                practical combination of the
-                                                <a href="http://www.transportation.gov/livability/101" target="_blank">Livability</a>
-                                                and <a href="http://www.epa.gov/dced/about_sg.htm#principles" target="_blank">Smart Growth</a>
-                                                principles.
-                                            </p><br />
-                                            <p align="center" style="font-size: 1.2em;">
-                                                To begin a search of all available assessment tools,
-                                                click &quot;<strong>Begin Search</strong>.&quot;
-                                            </p>
-                                            <p align="center">
-                                                <a href="{% url "questions" %}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Begin Search','','{% static "img/btn-begin-search-hover.png" %}',1)" id="begin_search">
-                                                    <img src="{% static "img/btn-begin-search.png" %}" alt="Begin Search" name="Begin Search" width="112" height="23" border="0">
-                                                </a>
-                                            </p>
-                                            <p>&nbsp;</p>
-                                            <p style="font-size: 1.2em;">
-                                                <strong>
-                                                    <span style="color: rgb(39,56,125);">
-                                                        Helpful Links &amp; Additional Resources<br>
-                                                    </span>
-                                                </strong><br />
-                                                <a id="link_text" href="https://safestates.site-ym.com/?HelpfulLinksSafety">
-                                                    Click here
-                                                </a>
-                                                to access helpful links and resources related to health, livability,
-                                                and Smart Growth.
-                                            </p><br />
-                                            <p style="font-size: 1.2em;">
-                                                Would you like to suggest a tool for the <i>Livability
-                                                &amp; Smart Growth Assessment Tools Database</i>?<br />
-                                                <a id="link_text" href="mailto:info@safestates.org">
-                                                    Send an email to the Safe States Alliance.
-                                                </a>
-                                            </p>
-                                            <br />
-                                            <p style="font-size: 0.7em; font-style: italic;">
-                                                *Please note that any views expressed within and by
-                                                the resources listed in the Livability &amp; Smart Growth Assessment
-                                                Tools Database are those of the authors and do not necessarily represent
-                                                those of the Safe States Alliance.
-                                                <a id="link_text" href="{% static "files/Livability_Tools_Inventory_Changes-Jan_2014.pdf" %}">
-                                                    Click here
-                                                </a>
-                                                for a full listing of the resources available in the Livability &amp;
-                                                Smart Growth Assessment Tools Database.
-                                            </p>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                {% endblock %}
+                                <div id="CustomPageBody">
+                                    <table border="0">
+                                        <tr>
+                                            <td align="center">
+                                                <p>
+                                                    <img src="{% static "img/safestates_skyline.jpg" %}" alt="" width="755" height="220">
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>&nbsp;</p>
+                                                <p style="font-size: 1.2em;">
+                                                    Hosted by the Safe States Alliance, the<em> Livability & Smart Growth
+                                                    Assessment Tools Database </em>provides centralized access to basic
+                                                    assessment tools and checklists that can assist users with evaluating
+                                                    their communities' degree of livability and provide essential
+                                                    information needed to create safer and healthier neighborhoods.
+                                                </p><br />
+                                                <p style="font-size: 1.2em;">
+                                                    The tools within this database are searchable by community size,
+                                                    assessment type, user role, and six topic areas developed as a
+                                                    practical combination of the
+                                                    <a href="http://www.transportation.gov/livability/101" target="_blank">Livability</a>
+                                                    and <a href="http://www.epa.gov/dced/about_sg.htm#principles" target="_blank">Smart Growth</a>
+                                                    principles.
+                                                </p><br />
+                                                <p align="center" style="font-size: 1.2em;">
+                                                    To begin a search of all available assessment tools,
+                                                    click &quot;<strong>Begin Search</strong>.&quot;
+                                                </p>
+                                                <p align="center">
+                                                    <a href="{% url "questions" %}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Begin Search','','{% static "img/btn-begin-search-hover.png" %}',1)" id="begin_search">
+                                                        <img src="{% static "img/btn-begin-search.png" %}" alt="Begin Search" name="Begin Search" width="112" height="23" border="0">
+                                                    </a>
+                                                </p>
+                                                <p>&nbsp;</p>
+                                                <p style="font-size: 1.2em;">
+                                                    <strong>
+                                                        <span style="color: rgb(39,56,125);">
+                                                            Helpful Links &amp; Additional Resources<br>
+                                                        </span>
+                                                    </strong><br />
+                                                    <a id="link_text" href="https://safestates.site-ym.com/?HelpfulLinksSafety">
+                                                        Click here
+                                                    </a>
+                                                    to access helpful links and resources related to health, livability,
+                                                    and Smart Growth.
+                                                </p><br />
+                                                <p style="font-size: 1.2em;">
+                                                    Would you like to suggest a tool for the <i>Livability
+                                                    &amp; Smart Growth Assessment Tools Database</i>?<br />
+                                                    <a id="link_text" href="mailto:info@safestates.org">
+                                                        Send an email to the Safe States Alliance.
+                                                    </a>
+                                                </p>
+                                                <br />
+                                                <p style="font-size: 0.7em; font-style: italic;">
+                                                    *Please note that any views expressed within and by
+                                                    the resources listed in the Livability &amp; Smart Growth Assessment
+                                                    Tools Database are those of the authors and do not necessarily represent
+                                                    those of the Safe States Alliance.
+                                                    <a id="link_text" href="{% static "files/Livability_Tools_Inventory_Changes-Jan_2014.pdf" %}">
+                                                        Click here
+                                                    </a>
+                                                    for a full listing of the resources available in the Livability &amp;
+                                                    Smart Growth Assessment Tools Database.
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    {% endblock %}
+                </div>
             </div>
             <div id="bottomcontentarea" style="height: 10px;"></div>
         </div>
     </div>
 
-{% include '_footer.html' %}
+{% include '_dbadmin_page_footer.html' %}
 </body>
 </html>

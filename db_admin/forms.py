@@ -1,7 +1,7 @@
 from django.forms import BooleanField, CharField, Form, Textarea, TextInput
 
 
-class EditForm(Form):
+class AddEditForm(Form):
     yearDeveloped = CharField(max_length=4, required=False)
     name = CharField(max_length=200, widget=TextInput(attrs={'size': '100'}))
     author = CharField(max_length=200, required=False, widget=TextInput(attrs={'size': '100'}))

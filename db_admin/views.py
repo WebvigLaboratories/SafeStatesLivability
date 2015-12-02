@@ -6,6 +6,130 @@ from django.core.urlresolvers import reverse
 from livability.models import *
 from forms import *
 
+
+@login_required
+def addEntry(request):
+    dReturn = {}
+
+    if request.method == 'POST':
+        form = AddEditForm(request.POST)
+        dReturn['form'] = form
+
+        form.is_valid()
+        cd = form.cleaned_data
+
+        tool = Tools()
+        tool.name = cd['name']
+        tool.author = cd['author']
+        tool.url = cd['url']
+
+        if cd['yearDeveloped'] != "":
+            tool.year_developed = cd['yearDeveloped']
+        else:
+            tool.year_developed = None
+
+        tool.description = cd['description']
+        tool.save()
+
+        if 'communitySizeUrban' in cd:
+            communitySize = Community_Size(toolname=tool, selection=1)
+            communitySize.save()
+        if 'communitySizeRural' in cd:
+            communitySize = Community_Size(toolname=tool, selection=2)
+            communitySize.save()
+
+        if 'assessmentFocusDevelopment' in cd:
+            assessmentFocus = Assessment_Focus(toolname=tool, selection=1)
+            assessmentFocus.save()
+        if 'assessmentFocusPhysical' in cd:
+            assessmentFocus = Assessment_Focus(toolname=tool, selection=2)
+            assessmentFocus.save()
+        if 'assessmentFocusPolicy' in cd:
+            assessmentFocus = Assessment_Focus(toolname=tool, selection=3)
+            assessmentFocus.save()
+        if 'assessmentFocusWalkability' in cd:
+            assessmentFocus = Assessment_Focus(toolname=tool, selection=4)
+            assessmentFocus.save()
+
+        if 'audienceElected' in cd:
+            audience = Audience(toolname=tool, selection=1)
+            audience.save()
+        if 'audienceLaypersons' in cd:
+            audience = Audience(toolname=tool, selection=2)
+            audience.save()
+        if 'audienePlanners' in cd:
+            audience = Audience(toolname=tool, selection=3)
+            audience.save()
+        if 'audienceProfessionals' in cd:
+            audience = Audience(toolname=tool, selection=4)
+            audience.save()
+        if 'audienceSchool' in cd:
+            audience = Audience(toolname=tool, selection=5)
+            audience.save()
+
+        topics = Topics()
+        topics.toolname = tool
+
+        if 'topicTransportation' in cd:
+            topics.q_transportation = 1
+        else:
+            topics.q_transportation = 0
+
+        if 'topicHousing' in cd:
+            topics.q_housing = 1
+        else:
+            topics.q_housing = 0
+
+        if 'topicInvestment' in cd:
+            topics.q_investment = 1
+        else:
+            topics.q_investment = 0
+
+        if 'topicCompact' in cd:
+            topics.q_compact = 1
+        else:
+            topics.q_compact = 0
+
+        if 'topicHealth' in cd:
+            topics.q_health = 1
+        else:
+            topics.q_health = 0
+
+        if 'topicPreservation' in cd:
+            topics.q_preservation = 1
+        else:
+            topics.q_preservation = 0
+
+        topics.save()
+
+        return redirect(reverse('admin_show', args=[tool.id]))
+
+    else:
+        form = AddEditForm()
+        dReturn['form'] = form
+
+        return render(request, "addEditEntry.html", dReturn)
+
+
+@login_required
+def deleteEntry(request, entryId):
+    try:
+        tool = Tools.objects.get(id = entryId)
+    except:
+        messages.error(request, "The tool with the id [%s] cannot be found" % entryId)
+        return redirect("admin_list")
+
+    try:
+        tool.delete()
+    except:
+        messages.error(request, "There was a problem deleting this tool")
+        return redirect("admin_list")
+    else:
+        messages.success(request, "Tool deleted")
+
+    return redirect("admin_list")
+
+
 @login_required
 def editEntry(request, entryId):
     dReturn = {}
@@ -36,7 +160,7 @@ def editEntry(request, entryId):
     topicPreservation = False
 
     if request.method == 'POST':
-        form = EditForm(request.POST)
+        form = AddEditForm(request.POST)
         dReturn['form'] = form
 
         form.is_valid()
@@ -58,8 +182,8 @@ def editEntry(request, entryId):
             item.delete()
 
         if 'communitySizeUrban' in cd:
-                communitySize = Community_Size(toolname=tool, selection=1)
-                communitySize.save()
+            communitySize = Community_Size(toolname=tool, selection=1)
+            communitySize.save()
         if 'communitySizeRural' in cd:
             communitySize = Community_Size(toolname=tool, selection=2)
             communitySize.save()
@@ -112,25 +236,25 @@ def editEntry(request, entryId):
         else:
             topics.q_housing = 0
 
-        if 'topicPreservation' in cd:
-            topics.q_preservation = 1
+        if 'topicInvestment' in cd:
+            topics.q_investment = 1
         else:
-            topics.q_preservation = 0
-
-        if 'topicHousing' in cd:
-            topics.q_housing = 1
-        else:
-            topics.q_housing = 0
+            topics.q_investment = 0
 
         if 'topicCompact' in cd:
             topics.q_compact = 1
         else:
             topics.q_compact = 0
 
-        if 'topicInvestment' in cd:
-            topics.q_investment = 1
+        if 'topicHealth' in cd:
+            topics.q_health = 1
         else:
-            topics.q_investment = 0
+            topics.q_health = 0
+
+        if 'topicPreservation' in cd:
+            topics.q_preservation = 1
+        else:
+            topics.q_preservation = 0
 
         topics.save()
 
@@ -184,7 +308,7 @@ def editEntry(request, entryId):
             topicInvestment = True
 
 
-        form = EditForm(initial={
+        form = AddEditForm(initial={
             'yearDeveloped': tool.year_developed,
             'name': tool.name,
             'author': tool.author,
@@ -211,7 +335,8 @@ def editEntry(request, entryId):
 
         dReturn['form'] = form
 
-        return render(request, "editEntry.html", dReturn)
+        return render(request, "addEditEntry.html", dReturn)
+
 
 @login_required
 def listEntries(request):
@@ -221,6 +346,7 @@ def listEntries(request):
     dReturn['tools'] = tools
 
     return render(request, "listEntries.html", dReturn)
+
 
 @login_required
 def showEntry(request, entryId):

@@ -9,11 +9,11 @@
             <script type="text/javascript" src="https://safestates.site-ym.com/global_inc/js/ContentScores.js"></script>
 
             <div id="CustomPageBody">
-                <h3>Database Administration - Edit Entry</h3>
+                <h3>Database Administration - {% if "edit" in request.path %}Edit Entry{% else %}Add New Entry{% endif %}</h3>
                 {% include '_messages.html' %}
                 <br />
                 <h4>Tool Information</h4>
-                <a href="#">Delete This Entry</a>
+                {% if "edit" in request.path %}<a href="{% url 'admin_delete' entryId %}" class="btn btn-danger">Delete This Entry</a>{% endif %}
                 <hr />
                 {{ form.non_field_errors }}
                 <form action="." method="POST">{% csrf_token %}
@@ -147,7 +147,7 @@
                             </td>
                         </tr>
                     </table>
-                    <button type="submit">Save</button> | <button type="button" onclick="window.location = '{% url 'admin_show' entryId %}' ">Cancel</button><br /><br />
+                    <button class="btn-primary" type="submit">Save</button> | {% if "edit" in request.path %}<button class="btn" type="button" onclick="window.location = '{% url 'admin_show' entryId %}' ">{% else %}<button type="button" onclick="window.location = '{% url 'admin_list' %}' ">{% endif %}Cancel</button><br /><br />
                 </form>
                 <a href="{% url 'admin_list' %}">Return to list</a>
             </div>
