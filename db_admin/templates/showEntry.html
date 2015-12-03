@@ -12,8 +12,9 @@
                 <h3>Database Administration - Show Entry</h3>
                 {% include '_messages.html' %}
                 <br />
+                <div class="pull-right"><a href="{% url 'admin_edit' tool.id %}" class="btn btn-primary">Edit This Entry</a></div>
+
                 <h4>Tool Information</h4>
-                <a href="{% url 'admin_edit' tool.id %}" class="btn btn-primary">Edit</a>
                 <hr />
                 <table style="width: 100%">
                     <tr style="vertical-align: top">
@@ -85,7 +86,7 @@
                     </tr>
                 </table>
 
-                <a href="{% url 'admin_list' %}">Return to list</a>
+                <a href="{% url 'admin_list' %}" class="btn btn-primary">Return to list</a>
             </div>
         </td>
     </tr>

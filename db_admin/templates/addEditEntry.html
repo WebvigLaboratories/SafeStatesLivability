@@ -13,7 +13,6 @@
                 {% include '_messages.html' %}
                 <br />
                 <h4>Tool Information</h4>
-                {% if "edit" in request.path %}<a href="{% url 'admin_delete' entryId %}" class="btn btn-danger">Delete This Entry</a>{% endif %}
                 <hr />
                 {{ form.non_field_errors }}
                 <form action="." method="POST">{% csrf_token %}
@@ -47,11 +46,11 @@
                                 <table>
                                     <tr>
                                         <td>{{ form.communitySizeUrban }} {{ form.communitySizeUrban.error_messages }}</td>
-                                        <td>- 1.) Urban</td>
+                                        <td>&nbsp; 1.) Urban</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.communitySizeRural }} {{ form.communitySizeRural.error_messages }}</td>
-                                        <td>- 2.) Rural</td>
+                                        <td>&nbsp; 2.) Rural</td>
                                     </tr>
                                 </table>
                             </td>
@@ -65,19 +64,19 @@
                                 <table>
                                     <tr>
                                         <td>{{ form.assessmentFocusDevelopment }} {{ form.assessmentFocusDevelopment.error_messages }}</td>
-                                        <td>- 1.) Development or Transportation Projects</td>
+                                        <td>&nbsp; 1.) Development or Transportation Projects</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.assessmentFocusPhysical }}  {{ form.assessmentFocusPhysical.error_messages }}</td>
-                                        <td>- 2.) Physical Environment of a Community, Neighborhood, or School</td>
+                                        <td>&nbsp; 2.) Physical Environment of a Community, Neighborhood, or School</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.assessmentFocusPolicy}} {{ form.assessmentFocusPolicy.error_messages }}</td>
-                                        <td>- 3.) Policy, Plan, Codes, or Standards</td>
+                                        <td>&nbsp; 3.) Policy, Plan, Codes, or Standards</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.assessmentFocusWalkability }} {{ form.assessmentFocusWalkability.error_messages }}</td>
-                                        <td>- 4.) Walkability, Bikability, and/or Transit Access</td>
+                                        <td>&nbsp; 4.) Walkability, Bikability, and/or Transit Access</td>
                                     </tr>
                                 </table>
                             </td>
@@ -91,23 +90,23 @@
                                 <table>
                                     <tr>
                                         <td>{{ form.audienceElected }} {{ form.audienceElected.error_messages }}</td>
-                                        <td>- 1.) Elected Officials</td>
+                                        <td>&nbsp; 1.) Elected Officials</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.audienceLaypersons }} {{ form.audienceLaypersons.error_messages }}</td>
-                                        <td>- 2.) Laypersons</td>
+                                        <td>&nbsp; 2.) Laypersons</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.audiencePlanners }} {{ form.audiencePlanners.error_messages }}</td>
-                                        <td>- 3.) Planners</td>
+                                        <td>&nbsp; 3.) Planners</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.audienceProfessionals }} {{ form.audienceProfessionals.error_messages }}</td>
-                                        <td>- 4.) PH Professionals</td>
+                                        <td>&nbsp; 4.) PH Professionals</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.audienceSchool }} {{ form.audienceSchool.error_messages }}</td>
-                                        <td>- 5.) School Officials</td>
+                                        <td>&nbsp; 5.) School Officials</td>
                                     </tr>
                                 </table>
                             </td>
@@ -121,35 +120,35 @@
                                 <table>
                                     <tr>
                                         <td>{{ form.topicTransportation }} {{ form.topicTransportation.error_messages }}</td>
-                                        <td>- Transportation</td>
+                                        <td>&nbsp; Transportation</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.topicHousing }} {{ form.topicHousing.error_messages }}</td>
-                                        <td>- Housing</td>
+                                        <td>&nbsp; Housing</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.topicInvestment }} {{ form.topicInvestment.error_messages }}</td>
-                                        <td>- Investment</td>
+                                        <td>&nbsp; Investment</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.topicCompact }} {{ form.topicCompact.error_messages }}</td>
-                                        <td>- Compact</td>
+                                        <td>&nbsp; Compact</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.topicHealth }} {{ form.topicHealth.error_messages }}</td>
-                                        <td>- Health</td>
+                                        <td>&nbsp; Health</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form.topicPreservation }} {{ form.topicPreservation.error_messages }}</td>
-                                        <td>- Preservation</td>
+                                        <td>&nbsp; Preservation</td>
                                     </tr>
                                 </table>
                             </td>
                         </tr>
                     </table>
-                    <button class="btn-primary" type="submit">Save</button> | {% if "edit" in request.path %}<button class="btn" type="button" onclick="window.location = '{% url 'admin_show' entryId %}' ">{% else %}<button type="button" onclick="window.location = '{% url 'admin_list' %}' ">{% endif %}Cancel</button><br /><br />
+                    <button class="btn btn-primary" type="submit">Save</button> | {% if "edit" in request.path %}<button class="btn" type="button" onclick="window.location = '{% url 'admin_show' entryId %}' ">{% else %}<button type="button" class="btn" onclick="window.location = '{% url 'admin_list' %}' ">{% endif %}Cancel</button>{% if "edit" in request.path %}<div class="pull-right"><a href="{% url 'admin_delete' entryId %}" class="btn btn-danger">Delete This Entry</a></div>{% endif %}
+                <br /><br />
                 </form>
-                <a href="{% url 'admin_list' %}">Return to list</a>
             </div>
         </td>
     </tr>
