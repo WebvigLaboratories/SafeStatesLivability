@@ -1,5 +1,6 @@
 *.cfg
 *.json
+safestates.db
 *.pyc
 SafeStates.iml
 .idea/
