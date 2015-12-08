@@ -57,7 +57,7 @@ def addEntry(request):
         if 'audienceLaypersons' in cd:
             audience = Audience(toolname=tool, selection=2)
             audience.save()
-        if 'audienePlanners' in cd:
+        if 'audiencePlanners' in cd:
             audience = Audience(toolname=tool, selection=3)
             audience.save()
         if 'audienceProfessionals' in cd:
@@ -215,7 +215,7 @@ def editEntry(request, entryId):
         if 'audienceLaypersons' in cd:
             audience = Audience(toolname=tool, selection=2)
             audience.save()
-        if 'audienePlanners' in cd:
+        if 'audiencePlanners' in cd:
             audience = Audience(toolname=tool, selection=3)
             audience.save()
         if 'audienceProfessionals' in cd:
