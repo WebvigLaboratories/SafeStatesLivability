@@ -1,0 +1,18 @@
+---
+- name: Action livability database app
+  hosts: all
+  remote_user: ssa_admin
+  become: true
+
+  tasks:
+    - name: Get livability database status
+      become: true
+      shell: "ps aux | grep /home/ssa_admin/SafeStatesLivability | grep -v grep"
+      register: livability_status
+      changed_when: "livability_status.rc != 0"
+      ignore_errors: yes
+
+    - name: Stop livability database
+      become: true
+      when: livability_status.stdout != ""
+      shell: "/home/ssa_admin/safestates.init stop"
