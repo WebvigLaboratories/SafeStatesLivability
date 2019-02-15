@@ -1,0 +1,9 @@
+---
+applications:
+- name: safestates
+  instances: 1
+  memory: 128M
+  command: null
+  buildpack: python_buildpack
+  services:
+  - safestates-pgsql

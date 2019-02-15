@@ -13,24 +13,20 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import socket
-from ConfigParser import ConfigParser
+import dj_database_url
 
 DEVELOPMENT_HOSTS = [
-    "Dans-MacBook-Pro.local",
+    "Dans-MacBook-Air.local",
     "Dans-iMac.local",
+    "sheldon.webvig.net",
 ]
 
 if socket.gethostname() in DEVELOPMENT_HOSTS:
     DEVELOPMENT = True
     ALLOWED_HOSTS = []
-    DBNAME = "safestates.db" #Changed to remove test db
 else:
-    DEVELOPMENT = False
-    ALLOWED_HOSTS = [
-        "livability.safestates.org",
-        "livability.safestates.com",
-    ]
-    DBNAME = "safestates.db"
+    DEVELOPMENT = True
+    ALLOWED_HOSTS = ["*"]
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -66,6 +62,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 )
 
 ROOT_URLCONF = 'SafeStates.urls'
@@ -73,7 +70,7 @@ ROOT_URLCONF = 'SafeStates.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,6 +79,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': DEBUG,
         },
     },
 ]
@@ -90,14 +88,7 @@ WSGI_APPLICATION = 'SafeStates.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': "django.db.backends.sqlite3",
-        'NAME': DBNAME,
-    }
-}
+DATABASES = {'default': dj_database_url.config(conn_max_age=600)}
 
 
 # Internationalization
@@ -119,3 +110,5 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "SafeStates/static"),
 )
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
