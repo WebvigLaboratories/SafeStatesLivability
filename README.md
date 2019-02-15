@@ -12,4 +12,4 @@ Contact Webvig Laboratories support for support information.
 The SafeStates Livability Database Django application source code is licensed under the [GNU General Public License](http://www.gnu.org/licenses/gpl.html), except for the external libraries listed below.
 
 ## External Libraries
-+ [Django](https://www.djangoproject.com/) 1.8.x
++ [Django](https://www.djangoproject.com/) 1.11.x
