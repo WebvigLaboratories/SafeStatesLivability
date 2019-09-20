@@ -23,13 +23,12 @@ pipeline {
                 }
             }
             post {
-                success {
-                    slackSend(channel: '#automation_notifications', message: "Ansible Playbook - ${ANSIBLE_STAGE_NAME} - Success")
-                }
                 failure {
+                    slackSend(channel: '#safe_states', message: "Ansible Playbook - ${ANSIBLE_STAGE_NAME} - Failed, please check on it")
                     error("Ansible Playbook - ${ANSIBLE_STAGE_NAME} steps failed, please handle it!")
                 }
                 aborted {
+                    slackSend(channel: '#safe_states', message: "Ansible Playbook - ${ANSIBLE_STAGE_NAME} - Failed, please check on it")
                     error("Ansible Playbook - ${ANSIBLE_STAGE_NAME} steps failed. Stopping operation!")
                 }
             }
