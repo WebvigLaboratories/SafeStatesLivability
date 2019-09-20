@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         ANSIBLE_PLAYBOOK_CMD = "/Library/Frameworks/Python.framework/Versions/3.7/bin/ansible-playbook"
-        ANSIBLE_VAULT_PASSWORD_FILE = "/User/Shared/Jenkins"
+        ANSIBLE_VAULT_PASSWORD_FILE = "/User/Shared/Jenkins/.vp"
         PLAYBOOK_DIR = "scripts/ansible-playbooks"
     }
 
