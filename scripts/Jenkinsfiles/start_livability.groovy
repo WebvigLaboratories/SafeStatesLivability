@@ -13,7 +13,7 @@ pipeline {
     }
 
     stages {
-        stage("Ansible Playbook - ${ANSIBLE_STAGE_NAME}") {
+        stage("Ansible Playbook - Start Livability App") {
             steps {
                 script {
                     echo "Ansible Playbook - ${ANSIBLE_STAGE_NAME}"
