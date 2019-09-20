@@ -23,6 +23,9 @@ pipeline {
                 }
             }
             post {
+                success {
+                    slackSend(channel: '#automation_notifications', message: "Ansible Playbook - ${ANSIBLE_STAGE_NAME} - Success")
+                }
                 failure {
                     error("Ansible Playbook - ${ANSIBLE_STAGE_NAME} steps failed, please handle it!")
                 }
