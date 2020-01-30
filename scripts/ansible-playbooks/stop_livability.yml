@@ -3,6 +3,7 @@
   hosts: all
   remote_user: ssa_admin
   become: true
+  gather_facts: false
 
   tasks:
     - name: Get livability database status
