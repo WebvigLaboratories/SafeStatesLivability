@@ -52,7 +52,7 @@
                 {% endif %}
         {% endif %}
 
-      <form class="form-signin" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+      <form class="form-signin" method="post" action="{% url 'login' %}">
           {% csrf_token %}
           <h2 class="form-signin-heading">Please sign in</h2>
           <label for="inputUsername" class="sr-only">Username</label>
